@@ -1,0 +1,10 @@
+.banner {
+  position: relative;
+  padding: 1rem 0;
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.banner img {
+  height: 8rem;
+}
