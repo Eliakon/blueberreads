@@ -1,10 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 import './Banner.css'
 
 const Banner = () => (
   <header className="banner">
-    <img src="/images/logo.png" alt="Blueberreads" />
+    <Link to="/">
+      <img src="/images/logo-large.png" alt="Blueberreads" />
+    </Link>
   </header>
 )
 

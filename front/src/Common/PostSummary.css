@@ -1,0 +1,14 @@
+.post-summary {
+  margin: 1rem 0;
+  display: flex;
+}
+
+.post-summary h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.post-summary .date {
+  display: block;
+  font-size: .8rem;
+}

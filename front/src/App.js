@@ -1,10 +1,16 @@
 import React from 'react';
-import Banner from './Banner';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+import Home from './Home';
+import Post from './Post';
 
 const App = () => (
-  <div className="App">
-    <Banner />
-  </div>
+  <Router>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/post/:id-:slug" component={Post} />
+    </Switch>
+  </Router>
 );
 
 export default App;
