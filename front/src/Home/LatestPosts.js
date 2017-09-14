@@ -14,6 +14,9 @@ const LatestPosts = () => {
       <h1>Latest posts</h1>
       <Separator />
       <PostSummary />
+      <PostSummary />
+      <PostSummary />
+      <PostSummary />
     </section>
   )
 };
