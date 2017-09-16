@@ -1,9 +1,35 @@
 .about {
-  padding: 1rem;
+  padding: 5rem 1rem;
   background-color: #f2f2f2;
 }
 
-.about h2 {
+.about .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about .content > img {
+  width: 12rem;
+}
+
+.about .content .presentation {
+  width: 40rem;
+  margin-left: 5rem;
+}
+
+.about .content .presentation h2 {
   margin: 0;
   font-size: 2.5rem;
+}
+
+.about .content .presentation .social svg {
+  display: inline-block;
+  margin-right: .5rem;
+  fill: #1a1a1a;
+  transition: fill .3s;
+}
+
+.about .content .presentation .social svg:hover {
+  fill: #3737c8;
 }
