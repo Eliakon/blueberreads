@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Pagination from './Pagination';
+
 import PostSummary from '../Common/PostSummary';
 import Separator from '../Common/Separator';
 
@@ -40,6 +42,7 @@ const LatestPosts = () => {
       <h1>Latest posts</h1>
       <Separator />
       {data.books.map((book, n) => <PostSummary {...book} key={n} />)}
+      <Pagination olderLink="/page/2" newerLink="" />
     </section>
   )
 };

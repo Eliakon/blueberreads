@@ -10,8 +10,19 @@
 }
 
 .post-summary .content h1 {
+  position: relative;
   margin: 0;
   font-size: 2rem;
+}
+
+.post-summary .content h1 a {
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: color .3s;
+}
+
+.post-summary .content h1:hover a {
+  color: #808080;
 }
 
 .post-summary .content .date {
@@ -21,12 +32,10 @@
 
 .post-summary .content .post-link {
   display: block;
-
   width: 100%;
   padding: .5rem;
   border: 1px solid #333;
   text-align: center;
-
   text-decoration: none;
   color: #333;
   font-style: italic;

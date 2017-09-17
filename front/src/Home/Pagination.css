@@ -1,0 +1,87 @@
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  font-style: italic;
+}
+
+.pagination .pagination-link {
+  position: relative;
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+.pagination .pagination-link.disabled {
+  color: #bbb;
+  pointer-events: none;
+  transition: color .3s;
+}
+
+.pagination .pagination-link:hover {
+  color: #808080;
+}
+
+.pagination .pagination-link::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  top: 1.5rem;
+  background-color: #1a1a1a;
+  transform-origin: left;
+  transform: scaleX(.2);
+  transition: transform .3s ease-in-out, background-color .3s;
+}
+
+.pagination .pagination-link:hover::before {
+  background-color: #808080;
+}
+
+.pagination .pagination-link.newer::before {
+  transform-origin: right;
+}
+
+.pagination .pagination-link:hover::before {
+  transform: scaleX(1);
+}
+
+.pagination .pagination-link.disabled::before {
+  background-color: #bbb;
+}
+
+.pagination .pagination-link::after {
+  content: '';
+  position: absolute;
+  top: 1.31rem;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  transition: border-color .3s;
+}
+
+.pagination .pagination-link.older::after {
+  left: 0;
+  border-width: .2rem .4rem .2rem 0;
+  border-color: transparent #1a1a1a transparent transparent;
+}
+
+.pagination .pagination-link.older:hover::after {
+  border-color: transparent #808080 transparent transparent;
+}
+
+.pagination .pagination-link.disabled.older::after {
+  border-color: transparent #bbb transparent transparent;
+}
+
+.pagination .pagination-link.newer::after {
+  right: 0;
+  border-width: .2rem 0 .2rem .4rem;
+  border-color: transparent transparent transparent #1a1a1a;
+}
+
+.pagination .pagination-link.newer:hover::after {
+  border-color: transparent transparent transparent #808080;
+}
+
+.pagination .pagination-link.disabled.newer::after {
+  border-color: transparent transparent transparent #bbb;
+}

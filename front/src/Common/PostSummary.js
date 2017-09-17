@@ -19,7 +19,9 @@ const PostSummary = ({ id, slug, title, date, intro, books }) => {
   return (
     <article className="post-summary">
       <div className="content">
-        <h1>{title}</h1>
+        <h1>
+          <Link to={postUrl}>{title}</Link>
+        </h1>
         <span className="date">{date}</span>
         <p>{intro}</p>
         <Link to={postUrl} className="post-link">Read more</Link>
