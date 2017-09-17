@@ -1,5 +1,6 @@
 .pagination {
   display: flex;
+  height: 3rem;
   justify-content: space-between;
   font-style: italic;
 }

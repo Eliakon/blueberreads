@@ -57,9 +57,10 @@
   position: absolute;
   height: 9rem;
   filter: grayscale(100%);
-  transition: filter .3s;
+  transition: filter .3s, transform .3s;
 }
 
 .post-summary .books img:hover {
   filter: grayscale(0);
+  transform: translateY(-2rem);
 }

@@ -7,11 +7,11 @@ const PostSummary = ({ id, slug, title, date, intro, books }) => {
   const postUrl = `/post/${id}-${slug}`;
 
   const book = (url, n) => {
-    const wOffset = 8 / books.length;
+    const wOffset = 10 / books.length;
     const hOffset = 5 / books.length;
     const style = {
-      left: `${10 - wOffset * n}rem`,
-      top: `${hOffset * n}rem`,
+      left: `${4 + wOffset * (books.length - n - 1)}rem`,
+      top: `${5 - hOffset * (books.length - n - 1)}rem`,
     };
     return (<img key={n} src={url} role="presentation" style={style} />);
   }

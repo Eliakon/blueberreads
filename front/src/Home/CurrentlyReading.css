@@ -1,5 +1,5 @@
 .currently-reading {
-  width: 18rem;
+  width: 18%;
   padding: .5rem 1rem;
   color: #fff;
 }
@@ -15,6 +15,6 @@
 
 .currently-reading img {
   position: relative;
-  width: 20rem;
-  left: 15%;
+  width: calc(100% + 2rem);
+  left: calc(15% - 1rem);
 }
