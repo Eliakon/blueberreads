@@ -3,4 +3,13 @@
   padding: 1rem 0;
   background-color: #f2f2f2;
   text-align: center;
+  transition: height .3s;
+}
+
+.banner-small {
+  height: 5rem;
+}
+
+.banner img {
+  max-height: 100%;
 }

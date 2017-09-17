@@ -1,0 +1,33 @@
+.post .content header {
+  display: flex;
+  justify-content: space-between;
+  margin: 3rem 5rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid #333;
+}
+
+.post .content header .title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.post .content header .title h1 {
+  margin: 0;
+  font-size: 2.4rem;
+}
+
+.post .content header .title .date {
+  display: block;
+}
+
+.post .content header .books img {
+  height: 8rem;
+  margin-left: .5rem;
+  filter: grayscale(1);
+  transition: filter .3s;
+}
+
+.post .content header .books img:hover {
+  filter: grayscale(0);
+}
