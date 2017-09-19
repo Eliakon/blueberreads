@@ -5,7 +5,6 @@
 
 .post-book-review.right {
   direction: rtl;
-  text-align: left;
 }
 
 .post-book-review .book,
@@ -57,7 +56,11 @@
 
 .post-book-review .book .book-data .rating {
   position: relative;
+}
+
+.post-book-review.right .book .book-data .rating {
   direction: ltr;
+  text-align: right;
 }
 
 .post-book-review .book .book-data .rating svg {
@@ -85,4 +88,5 @@
 
 .post-book-review.right .text {
   padding: 0 3rem 0 0;
+  text-align: left;
 }
