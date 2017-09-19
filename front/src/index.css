@@ -39,6 +39,11 @@ h1, h2, h3, h4, h5, h6 {
   font-style: italic;
 }
 
+p {
+  font-size: 1.1rem;
+  line-height: 1.7rem;
+}
+
 img {
   user-select: none;
 }

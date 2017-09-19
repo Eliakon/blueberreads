@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import marked from 'react-marked';
 import { Link } from 'react-router-dom'
 
 import './PostSummary.css';
@@ -23,7 +24,7 @@ const PostSummary = ({ id, slug, title, date, intro, books }) => {
           <Link to={postUrl}>{title}</Link>
         </h1>
         <span className="date">{date}</span>
-        <p>{intro}</p>
+        <div>{marked(intro)}</div>
         <Link to={postUrl} className="post-link">Read more</Link>
       </div>
       <div className="books">
