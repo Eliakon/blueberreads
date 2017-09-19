@@ -57,6 +57,7 @@
 
 .post-book-review .book .book-data .rating {
   position: relative;
+  direction: ltr;
 }
 
 .post-book-review .book .book-data .rating svg {
