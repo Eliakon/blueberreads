@@ -7,7 +7,7 @@ import './Footer.css';
 const Footer = () => (
   <footer className="about">
     <div className="content">
-      <img src="/images/maface.png" role="presentation" />
+      <img src="/images/maface.png" alt="" />
       <div className="presentation">
         <h2>About me</h2>
         <p>Welcome to Blueberreads!</p>

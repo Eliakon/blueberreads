@@ -1,0 +1,87 @@
+.post-book-review {
+  display: table;
+  border-spacing: 0 3rem;
+}
+
+.post-book-review.right {
+  direction: rtl;
+  text-align: left;
+}
+
+.post-book-review .book,
+.post-book-review .text {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.post-book-review .book {
+  width: 45%;
+  padding: 3rem 0 3rem 5rem;
+  color: #fff;
+  transform: translateX(-5rem);
+}
+
+.post-book-review.right .book {
+  padding: 3rem 5rem 3rem 0;
+  transform: translateX(5rem);
+}
+
+.post-book-review .book h1 {
+  margin-top: 0;
+  font-size: 2.4rem;
+  padding: 0 1rem 0 0;
+}
+
+.post-book-review.right .book h1 {
+  padding: 0 0 0 1rem;
+}
+
+.post-book-review .book .book-data {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-book-review .book .book-data .author-and-rating {
+  width: calc(70% - 5rem);
+  margin-right: 0 -4rem 0 0;
+}
+
+.post-book-review.right .book .book-data .author-and-rating {
+  margin: 0 0 0 -4rem;
+}
+
+.post-book-review .book .book-data h2 {
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+.post-book-review .book .book-data .rating {
+  position: relative;
+}
+
+.post-book-review .book .book-data .rating svg {
+  display: inline;
+  width: 2.5rem;
+  max-width: 20%;
+}
+
+.post-book-review .book .book-data .cover {
+  position: relative;
+  left: 5rem;
+}
+
+.post-book-review.right .book .book-data .cover {
+  right: 5rem;
+}
+
+.post-book-review .book .book-data .cover img {
+  max-width: 100%;
+}
+
+.post-book-review .text {
+  padding: 0 0 0 3rem;
+}
+
+.post-book-review.right .text {
+  padding: 0 3rem 0 0;
+}

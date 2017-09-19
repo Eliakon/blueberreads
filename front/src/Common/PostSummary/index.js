@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import marked from 'react-marked';
 import { Link } from 'react-router-dom'
 
@@ -14,7 +15,7 @@ const PostSummary = ({ id, slug, title, date, intro, books }) => {
       left: `${4 + wOffset * (books.length - n - 1)}rem`,
       top: `${5 - hOffset * (books.length - n - 1)}rem`,
     };
-    return (<img key={n} src={url} role="presentation" style={style} />);
+    return (<img key={n} src={url} alt="" style={style} />);
   }
 
   return (

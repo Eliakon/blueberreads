@@ -52,7 +52,7 @@
 .pagination .pagination-link::after {
   content: '';
   position: absolute;
-  top: 1.31rem;
+  top: 1.33rem;
   width: 0;
   height: 0;
   border-style: solid;
