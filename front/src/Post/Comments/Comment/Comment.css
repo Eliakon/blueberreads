@@ -1,0 +1,57 @@
+.post-comment {
+  border-top: 1px solid #333;
+  padding: .5rem 1rem;
+}
+
+.post-comment.admin {
+  background-color: #f2f2f2;
+}
+
+.post-comment .avatar-and-pseudo {
+  display: flex;
+}
+
+.post-comment .avatar-and-pseudo .pseudo {
+  margin: .5rem 0 0 0;
+}
+
+.post-comment.admin .avatar-and-pseudo .pseudo {
+  color: #3737c8;
+}
+
+.post-comment .avatar-and-pseudo .pseudo a {
+  text-decoration: underline;
+}
+
+.post-comment .avatar-and-pseudo .pseudo .twitter  {
+  fill: #333;
+  transition: fill .3s;
+}
+
+.post-comment .avatar-and-pseudo .pseudo .twitter:hover  {
+  fill: #808080;
+}
+
+.post-comment .avatar-and-pseudo .pseudo .twitter svg {
+  display: inline;
+  margin-left: .5rem;
+}
+
+.post-comment .avatar-and-pseudo .admin-avatar {
+  height: 3rem;
+  margin-right: .5rem;
+  padding-top: .5rem;
+}
+
+.post-comment .date {
+  font-size: .8rem;
+}
+
+.post-comment .text {
+  margin: 0 0 .5rem;
+}
+
+.post-comment p {
+  font-size: 1rem;
+  line-height: 1.4rem;
+}

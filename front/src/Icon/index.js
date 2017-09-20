@@ -6,6 +6,7 @@ import Mail from './Mail';
 import StarFilled from './StarFilled';
 import StarUnfilled from './StarUnfilled';
 import Twitter from './Twitter';
+import TwitterBird from './TwitterBird';
 
 import './Icon.css';
 
@@ -15,6 +16,7 @@ export const tagMap = {
   StarFilled,
   StarUnfilled,
   Twitter,
+  TwitterBird,
 };
 
 const Icon = ({ type, color, size }) => {

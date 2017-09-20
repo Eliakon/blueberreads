@@ -5,6 +5,7 @@ import Banner from '../Banner';
 import Footer from '../Footer';
 
 import BookReview from './BookReview';
+import Comments from './Comments';
 import Image from './Image';
 import Navigation from './Navigation';
 import Text from './Text';
@@ -83,6 +84,7 @@ const Post = () => {
         </header>
         <div className='post-intro'>{marked(intro)}</div>
         {content.map((item, n) => elementForContentType({...item, key: n}))}
+        <Comments />
         <Navigation />
       </article>
       <Footer />

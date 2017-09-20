@@ -1,0 +1,30 @@
+.post-comments {
+  padding: 0 0 3rem 0;
+}
+
+.post-comments > h1 {
+  font-size: 2rem;
+  margin-bottom: .5rem;
+}
+
+.post-comments .new-comment {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid #333;
+  padding: .5rem;
+  text-align: center;
+  color: #333;
+  font-style: italic;
+  font-size: 1.1rem;
+  transition: background-color .3s, color .3s;
+}
+
+.post-comments .new-comment:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #333;
+}
+
+.post-comments .new-comment:focus {
+  outline: 0;
+}
