@@ -10,7 +10,6 @@
 .post-book-review .book,
 .post-book-review .text {
     display: table-cell;
-    vertical-align: middle;
 }
 
 .post-book-review .book {
@@ -38,15 +37,21 @@
 .post-book-review .book .book-data {
   display: flex;
   justify-content: space-between;
+  position: relative;
+  left: 5rem;
+}
+
+.post-book-review.right .book .book-data {
+  left: 0;
+  right: 5rem;
 }
 
 .post-book-review .book .book-data .author-and-rating {
-  width: calc(70% - 5rem);
-  margin-right: 0 -4rem 0 0;
+  margin: 0 1rem 0 -5rem;
 }
 
 .post-book-review.right .book .book-data .author-and-rating {
-  margin: 0 0 0 -4rem;
+  margin: 0 -5rem 0 1rem;
 }
 
 .post-book-review .book .book-data h2 {
@@ -70,12 +75,12 @@
 }
 
 .post-book-review .book .book-data .cover {
-  position: relative;
-  left: 5rem;
+  /*position: relative;*/
+  /*left: 5rem;*/
 }
 
 .post-book-review.right .book .book-data .cover {
-  right: 5rem;
+  /*right: 5rem;*/
 }
 
 .post-book-review .book .book-data .cover img {
@@ -84,6 +89,7 @@
 
 .post-book-review .text {
   padding: 0 0 0 3rem;
+  vertical-align: middle;
 }
 
 .post-book-review.right .text {

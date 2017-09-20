@@ -2,9 +2,11 @@ import React from 'react';
 import marked from 'react-marked';
 
 import Banner from '../Banner';
+import Footer from '../Footer';
 
 import BookReview from './BookReview';
 import Image from './Image';
+import Navigation from './Navigation';
 import Text from './Text';
 
 import './Post.css'
@@ -81,7 +83,9 @@ const Post = () => {
         </header>
         <div className='post-intro'>{marked(intro)}</div>
         {content.map((item, n) => elementForContentType({...item, key: n}))}
+        <Navigation />
       </article>
+      <Footer />
     </div>
   )
 };

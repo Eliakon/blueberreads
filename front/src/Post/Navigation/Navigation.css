@@ -1,0 +1,5 @@
+.post-navigation {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #333;
+}

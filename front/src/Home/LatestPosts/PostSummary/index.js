@@ -32,7 +32,7 @@ const PostSummary = ({ id, slug, title, date, intro, books }) => {
         {books.map((url, n) => book(url, n))}
       </div>
     </article>
-  )
+  );
 };
 
 PostSummary.propTypes = {
@@ -42,6 +42,6 @@ PostSummary.propTypes = {
   date: PropTypes.string,
   intro: PropTypes.string,
   books: PropTypes.array,
-}
+};
 
 export default PostSummary;

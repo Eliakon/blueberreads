@@ -23,7 +23,7 @@
 }
 
 ::selection {
-  background-color: #1a1a1a;
+  background-color: #333;
   color: #fff;
 }
 
@@ -46,4 +46,14 @@ p {
 
 img {
   user-select: none;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+a:hover {
+  color: #808080;
 }

@@ -1,0 +1,59 @@
+.navigation-post-summary {
+  max-width: 50%;
+}
+
+.navigation-post-summary > h1 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.navigation-post-summary .summary h1 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.navigation-post-summary .summary .date {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.navigation-post-summary .summary .books {
+  display: flex;
+}
+
+.navigation-post-summary .summary .books .book {
+  height: 7rem;
+  margin-right: .5rem;
+}
+
+.navigation-post-summary .summary .books .book:last-child {
+  margin-right: 0;
+}
+
+.navigation-post-summary .summary .books .book img {
+  height: 100%;
+  filter: grayscale(1);
+  transition: filter .3s;
+}
+
+.navigation-post-summary .summary .books .book img:hover {
+  filter: grayscale(0);
+}
+
+.navigation-post-summary .summary .post-link {
+  display: block;
+  margin-top: 1rem;
+  padding: .5rem;
+  border: 1px solid #333;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  font-style: italic;
+  font-size: 1.1rem;
+  transition: background-color .3s, color .3s;
+}
+
+.navigation-post-summary .summary .post-link:hover {
+  background-color: #333;
+  color: #fff;
+}

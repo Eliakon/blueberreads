@@ -1,14 +1,12 @@
 import React from 'react';
 
-import Pagination from '../Pagination';
-
-import PostSummary from '../../Common/PostSummary';
-import Separator from '../../Common/Separator';
+import Pagination from './Pagination';
+import PostSummary from './PostSummary';
 
 import './LatestPosts.css';
 
 const data = {
-  books: [
+  posts: [
     {
       id: 1,
       slug: 'august-wrap-up',
@@ -34,17 +32,16 @@ const data = {
       books: ['/images/covers/6547258.jpg'],
     },
   ],
-}
+};
 
 const LatestPosts = () => {
   return (
     <section className="latest-posts">
       <h1>Latest posts</h1>
-      <Separator />
-      {data.books.map((book, n) => <PostSummary {...book} key={n} />)}
+      {data.posts.map((post, n) => <PostSummary {...post} key={n} />)}
       <Pagination olderLink="/page/2" newerLink="" />
     </section>
-  )
+  );
 };
 
 export default LatestPosts;
