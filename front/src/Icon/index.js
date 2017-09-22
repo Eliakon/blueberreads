@@ -1,22 +1,24 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import Discussion from './Discussion';
 import Goodreads from './Goodreads';
+import Link from './Link';
 import Mail from './Mail';
 import StarFilled from './StarFilled';
 import StarUnfilled from './StarUnfilled';
 import Twitter from './Twitter';
-import TwitterBird from './TwitterBird';
 
 import './Icon.css';
 
 export const tagMap = {
+  Discussion,
   Goodreads,
+  Link,
   Mail,
   StarFilled,
   StarUnfilled,
   Twitter,
-  TwitterBird,
 };
 
 const Icon = ({ type, color, size }) => {

@@ -9,14 +9,15 @@ import './Comment.css';
 const Comment = ({ pseudo, date, website, twitter, text, isAdmin }) => (
   <div className={`post-comment ${isAdmin ? 'admin' : ''}`}>
     <div className="avatar-and-pseudo">
-      {isAdmin ? <img className="admin-avatar" src="/images/maface.png" alt="" /> : null}
       <div>
-        <h3 className="pseudo">
-          {website ? <a href={website} target="_blank">{pseudo}</a> : pseudo}
-          {twitter ? <a className="twitter" href={`http://twitter.com/${twitter}`} target="_blank"><Icon type="TwitterBird" size="15" /></a> : null}
-        </h3>
+        <h3 className="pseudo">{pseudo}</h3>
         <span className="date">{date}</span>
+        <div className="links">
+          {website ? <a href={website} target="_blank"><Icon type="Link" size="20" /></a> : null}
+          {twitter ? <a href={`http://twitter.com/${twitter}`} target="_blank"><Icon type="Twitter" size="20" /></a> : null}
+        </div>
       </div>
+      {isAdmin ? <div className="admin-avatar"><img src="/images/maface.png" alt="" /></div> : null}
     </div>
     <div className="text">{marked(text)}</div>
   </div>

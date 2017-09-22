@@ -1,4 +1,7 @@
 .post-navigation {
   display: flex;
   justify-content: space-between;
+  margin: 0 -5rem;
+  padding: 2rem 5rem;
+  background-color: #f2f2f2;
 }

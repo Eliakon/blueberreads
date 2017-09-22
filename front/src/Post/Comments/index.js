@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Comment from './Comment';
+import CommentForm from './CommentForm';
+
+import Icon from '../../Icon';
 
 import './Comments.css';
 
 const data = {
-  page: 1,
-  pagesCount: 3,
-  commentsCount: 42,
   comments: [
     {
       pseudo: 'Potichat',
@@ -36,25 +36,23 @@ const data = {
   ],
 };
 
-class Comments extends React.Component {
-  render = () => {
-    const { commentsCount, comments } = data;
+const Comments = () => {
+  const { comments } = data;
 
-    return (
-      <section className="post-comments">
-        <h1>{commentsCount > 0 ? `${commentsCount} comments` : 'No comment yet'}</h1>
-        {
-          commentsCount > 0
-            ?
-              <div>
-                {comments.map((comment, n) => <Comment {...comment} key={n} />)}
-                <button className="new-comment">Write a comment</button>
-              </div>
-            : <div>[Comment form]</div>
-        }
-      </section>
-    );
-  }
+  const commentsElements = (
+    <div>
+      {comments.map((comment, n) => <Comment {...comment} key={n} />)}
+    </div>
+  );
+
+  return (
+    <section className="post-comments">
+      <h1>Discussion <Icon type="Discussion" size="25" /></h1>
+      {comments.length > 0 ? <h2>{comments.length} comments</h2> : null}
+      {comments.length > 0 ? commentsElements : null}
+      <CommentForm />
+    </section>
+  );
 };
 
 export default Comments;

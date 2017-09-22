@@ -84,8 +84,8 @@ const Post = () => {
         </header>
         <div className='post-intro'>{marked(intro)}</div>
         {content.map((item, n) => elementForContentType({...item, key: n}))}
-        <Comments />
         <Navigation />
+        <Comments />
       </article>
       <Footer />
     </div>

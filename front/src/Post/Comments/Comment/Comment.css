@@ -1,57 +1,61 @@
 .post-comment {
-  border-top: 1px solid #333;
   padding: .5rem 1rem;
+  display: flex;
 }
 
-.post-comment.admin {
+.post-comment:nth-child(even) {
   background-color: #f2f2f2;
 }
 
 .post-comment .avatar-and-pseudo {
+  text-align: right;
+  flex: 0 0 15rem;
+  padding-right: 2rem;
+}
+
+.post-comment.admin .avatar-and-pseudo {
   display: flex;
+  justify-content: flex-end;
 }
 
 .post-comment .avatar-and-pseudo .pseudo {
   margin: .5rem 0 0 0;
+  font-size: 1.2rem;
 }
 
 .post-comment.admin .avatar-and-pseudo .pseudo {
   color: #3737c8;
 }
 
-.post-comment .avatar-and-pseudo .pseudo a {
-  text-decoration: underline;
+.post-comment .date {
+  display: block;
+  margin-bottom: .3rem;
+  font-size: .8rem;
+  color: #808080;
 }
 
-.post-comment .avatar-and-pseudo .pseudo .twitter  {
+.post-comment .avatar-and-pseudo .links svg {
+  display: inline;
+  margin-left: .2rem;
   fill: #333;
   transition: fill .3s;
 }
 
-.post-comment .avatar-and-pseudo .pseudo .twitter:hover  {
+.post-comment .avatar-and-pseudo .links svg:hover  {
   fill: #808080;
 }
 
-.post-comment .avatar-and-pseudo .pseudo .twitter svg {
-  display: inline;
-  margin-left: .5rem;
+.post-comment.admin .avatar-and-pseudo .admin-avatar {
+  flex: 0 0 4rem;
+  padding-left: .5rem;
 }
 
-.post-comment .avatar-and-pseudo .admin-avatar {
-  height: 3rem;
-  margin-right: .5rem;
-  padding-top: .5rem;
+.post-comment.admin .avatar-and-pseudo .admin-avatar img {
+  width: 100%;
 }
 
-.post-comment .date {
-  font-size: .8rem;
-}
-
-.post-comment .text {
-  margin: 0 0 .5rem;
-}
-
-.post-comment p {
+.post-comment .text p {
+  margin: .5rem 0;
   font-size: 1rem;
   line-height: 1.4rem;
 }
