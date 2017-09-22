@@ -34,7 +34,9 @@ body {
   color: #333;
 }
 
-button {
+button,
+textarea,
+input {
   font-family: 'Lora';
 }
 

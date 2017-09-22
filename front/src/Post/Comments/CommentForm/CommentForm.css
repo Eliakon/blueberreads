@@ -1,3 +1,91 @@
 .comment-form h2 {
+  margin: 3rem 0 .5rem;
   font-size: 1.6rem;
+}
+
+.comment-form form {
+  height: 1rem;
+  transition: height .3s;
+}
+
+.comment-form form.active {
+  height: auto;
+}
+
+.comment-form form textarea {
+  width: calc(100% - .25rem);
+  max-width: calc(100% - .25rem);
+  height: 1rem;
+  border: 0;
+  border-bottom: .25rem solid #e6e6e6;
+  font-size: 1rem;
+  transition: height .3s;
+}
+
+.comment-form form.active textarea {
+  height: 7rem;
+  width: calc(100% - .5rem);
+  max-width: calc(100% - .5rem);
+  border: .25rem solid #e6e6e6;
+}
+
+.comment-form form textarea:focus {
+  outline: 0;
+}
+
+.comment-form form .contact {
+  opacity: 0;
+  transition: opacity .5s .3s;
+}
+
+.comment-form form.active .contact {
+  display: flex;
+  margin-top: 1rem;
+  opacity: 1;
+}
+
+.comment-form form .contact input {
+  flex: 1;
+  border: 0;
+  border-bottom: .25rem solid #f2f2f2;
+  font-size: 1rem;
+}
+
+.comment-form form .contact input.required {
+  border-color: #e6e6e6;
+}
+
+.comment-form form .contact input:focus {
+  outline: 0;
+}
+
+.comment-form form .contact input:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.comment-form form .submit {
+  width: 100%;
+  margin-top: 1rem;
+  padding: .5rem;
+  border: 1px solid #333;
+  background-color: #fff;
+  opacity: 0;
+  color: #333;
+  font-size: 1.1rem;
+  font-style: italic;
+  transition: color .3s, background-color .3s, opacity .5s .6s;
+}
+
+.comment-form form.active .submit {
+  opacity: 1;
+}
+
+.comment-form form .submit:hover {
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+.comment-form form .submit:focus {
+  outline: 0;
 }
