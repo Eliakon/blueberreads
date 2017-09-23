@@ -9,3 +9,18 @@
   font-size: 2.5rem;
   border-bottom: 1px solid #333;
 }
+
+.latest-posts > * {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: transform .5s, opacity .5s;
+}
+
+.latest-posts > *:not(.section-title) {
+  transition-delay: .3s;
+}
+
+.latest-posts.appear > * {
+  transform: translateY(0);
+  opacity: 1;
+}

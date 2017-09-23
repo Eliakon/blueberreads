@@ -1,7 +1,31 @@
 .currently-reading {
+  position: relative;
   width: 18%;
-  padding: .5rem 1rem;
   color: #fff;
+  transition: width .5s, padding .5s;
+}
+
+.currently-reading > * {
+  padding: .5rem 1rem;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity .5s, transform .5s;
+}
+
+.currently-reading.appear > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.currently-reading .background {
+  position: absolute;
+  width: 0;
+  height: calc(100% - 1rem);
+  transition: width .5s;
+}
+
+.currently-reading.appear .background {
+  width: 100%;
 }
 
 .currently-reading h1,
@@ -13,8 +37,14 @@
   font-size: 1.8rem;
 }
 
+.currently-reading .book-title,
+.currently-reading .book-author {
+  transition-delay: .6s;
+}
+
 .currently-reading img {
   position: relative;
   width: calc(100% + 2rem);
   left: calc(15% - 1rem);
+  transition-delay: .3s;
 }

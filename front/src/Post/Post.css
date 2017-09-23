@@ -2,6 +2,21 @@
   margin: 3rem 5rem;
 }
 
+.post > .content > * {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity .5s, transform .5s;
+}
+
+.post > .content > *:not(header) {
+  transition-delay: .3s;
+}
+
+.post.appear > .content > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .post > .content > header {
   display: flex;
   justify-content: space-between;
@@ -37,6 +52,24 @@
   transition: filter .3s;
 }
 
+.post.appear > .content > header .books img {
+  animation: .5s book-appear both;
+}
+
 .post > .content > header .books img:hover {
   filter: grayscale(0);
+}
+
+@keyframes book-appear {
+  from {
+    animation-timing-function: cubic-bezier(.5, -.5, .5, 1.5);
+    transform: scale(0) translateY(-2rem);
+  }
+  50% {
+    animation-timing-function: ease;
+    transform: scale(1) translateY(-2rem);
+  }
+  to {
+    transform: scale(1) translateY(0);
+  }
 }

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 import './Banner.css'
 
-const Banner = ({ size }) => (
-  <header className={`banner ${size ? `banner-${size}`: ''}`}>
+const Banner = () => (
+  <header className="banner">
     <Link to="/">
       <img src="/images/logo-large.png" alt="Blueberreads" />
     </Link>

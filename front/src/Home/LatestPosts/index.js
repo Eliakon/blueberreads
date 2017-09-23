@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import Pagination from './Pagination';
@@ -34,14 +35,18 @@ const data = {
   ],
 };
 
-const LatestPosts = () => {
+const LatestPosts = ({ className }) => {
   return (
-    <section className="latest-posts">
-      <h1>Latest posts</h1>
+    <section className={`latest-posts ${className || ''}`}>
+      <h1 className="section-title">Latest posts</h1>
       {data.posts.map((post, n) => <PostSummary {...post} key={n} />)}
       <Pagination olderLink="/page/2" newerLink="" />
     </section>
   );
+};
+
+LatestPosts.propTypes = {
+  className: PropTypes.string,
 };
 
 export default LatestPosts;

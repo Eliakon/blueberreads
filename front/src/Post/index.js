@@ -66,30 +66,42 @@ const elementForContentType = (item) => {
   console.log('post content type unknown:', item.type);
 }
 
-const Post = () => {
-  const { title, date, intro, books, content } = data;
+class Post extends React.Component {
+  state = {
+    appear: false,
+  };
 
-  return (
-    <div className="post">
-      <Banner size="small" />
-      <article className="content">
-        <header>
-          <div className="title">
-            <h1>{title}</h1>
-            <span className="date">{date}</span>
-          </div>
-          <div className="books">
-            {books.map((coverUrl, n) => <img key={n} src={coverUrl} alt="" />)}
-          </div>
-        </header>
-        <div className='post-intro'>{marked(intro)}</div>
-        {content.map((item, n) => elementForContentType({...item, key: n}))}
-        <Navigation />
-        <Comments />
-      </article>
-      <Footer />
-    </div>
-  )
+  componentDidMount = () => {
+    window.scrollTo(0, 0);
+    window.setTimeout(() => this.setState({ appear: true }), 0);
+  }
+
+  render = () => {
+    const { title, date, intro, books, content } = data;
+    const className = this.state.appear ? 'appear' : '';
+
+    return (
+      <div className={`post ${className}`}>
+        <Banner />
+        <article className="content">
+          <header>
+            <div className="title">
+              <h1>{title}</h1>
+              <span className="date">{date}</span>
+            </div>
+            <div className="books">
+              {books.map((coverUrl, n) => <img key={n} src={coverUrl} alt="" style={{animationDelay: `.${n}s`}} />)}
+            </div>
+          </header>
+          <div className='post-intro'>{marked(intro)}</div>
+          {content.map((item, n) => elementForContentType({...item, key: n}))}
+          <Navigation />
+          <Comments />
+        </article>
+        <Footer />
+      </div>
+    );
+  };
 };
 
 export default Post;

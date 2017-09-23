@@ -25,6 +25,7 @@
 
 .post-comment.admin .avatar-and-pseudo .pseudo {
   color: #3737c8;
+  font-weight: bold;
 }
 
 .post-comment .date {
