@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { getPosts } from '../API';
 import Banner from '../Banner';
 import Footer from '../Footer';
 import CurrentlyReading from './CurrentlyReading';
@@ -13,6 +14,7 @@ class Home extends React.Component {
   };
 
   componentDidMount = () => {
+    getPosts();
     window.scrollTo(0, 0);
     window.setTimeout(() => this.setState({ appear: true }), 0);
   }
