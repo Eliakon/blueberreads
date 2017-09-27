@@ -3,11 +3,11 @@ import React from 'react';
 
 import './CurrentlyReading.css';
 
-const CurrentlyReading = ({ className, title, author, color, coverUrl }) => (
+const CurrentlyReading = ({ className, title, author, color, cover }) => (
   <article className={`currently-reading ${className}`}>
-    <div className="background" style={{backgroundColor: color}} />
+    <div className="background" style={{backgroundColor: `#${color}`}} />
     <h1>Currently reading</h1>
-    <img src={coverUrl} alt={title} />
+    <img src={cover} alt={title} />
     <h2 className="book-title">{title}</h2>
     <h2 className="book-author">by {author}</h2>
   </article>
@@ -26,7 +26,7 @@ CurrentlyReading.defaultProps = {
   title: '',
   author: '',
   color: 'transparent',
-  coverUrl: '',
+  cover: '',
 };
 
 export default CurrentlyReading;

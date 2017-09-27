@@ -1,12 +1,8 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-currently_reading_mock = {
-    'title': 'The Gentleman\'s Guide to Vice and Virtue',
-    'author': 'Mackenzi Lee',
-    'color': '#5fd38d',
-    'coverUrl': '/images/covers/32319702.jpg',
-}
+from .models import CurrentlyReading
+from .serializers import CurrentlyReadingSerializer
 
 latest_posts_mock = [
     {
@@ -124,9 +120,14 @@ post_comments_mock = [
 class Posts(APIView):
     def get(self, request):
         page = request.GET.get('page', 0)
+
+        currently_reading = CurrentlyReadingSerializer(
+            CurrentlyReading.objects.last()
+        ).data
+
         return Response({
             'page': page,
-            'currentlyReading': currently_reading_mock,
+            'currentlyReading': currently_reading['book'],
             'latestPosts': latest_posts_mock,
         })
 
