@@ -1,15 +1,9 @@
 import request from 'request';
 
 const host = 'http://localhost:8000';
+const r = request.defaults({ json: true });
 
-export const getPosts = (callback) => {
-  const url = `${host}/blog/posts/`;
-  request.get(url, (error, response, body) => {
-    if (error) {
-      console.log('ERROR', error);
-    }
-
-    console.log('response', response);
-    console.log('body', body);
-  });
+export const getPosts = (page, callback) => {
+  const url = `${host}/blog/posts/?page=${page}`;
+  r.get(url, (error, response, body) => callback(error, body));
 };
