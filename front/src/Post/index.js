@@ -1,6 +1,7 @@
 import React from 'react';
 import marked from 'react-marked';
 
+import { getPost } from '../API';
 import Banner from '../Banner';
 import Footer from '../Footer';
 
@@ -12,48 +13,6 @@ import Text from './Text';
 
 import './Post.css'
 
-const reviewText = `This is the story of Kestrel, a young noble woman living in a colonial territory, where native population has been enslaved.
-Kestrel's love interest is actually... Well, the slave she bought at the beginningof the story. How romantic, right?
-
-Furthermore, the slave used to bea nobleman himself (because, colony and slavery, you know?) and used toown a villa in the city.This was an OK read, I guess. It was an entertaining quick-read, whichis akways appreciable.
-
-However, I had very little insterest in the characters: they seemed prettyone-dimensional to me. The romance made no sense, and the colony/slaverytheme made me really uncomfortable. Stockholm Syndrome and shit.`;
-
-const data = {
-  id: 1,
-  slug: 'august-wrap-up',
-  title: 'August wrap-up',
-  date: '09-14-2017',
-  intro: 'I have read a total of four books this month. I did not expect to read so much, because I planned on reading The Final Empire which is huge.\n\nI nonetheless did it! I am quite proud of myself, let me tell you.',
-  books: ['/images/covers/15801353.jpg', '/images/covers/6547258.jpg', '/images/covers/17756559.jpg', '/images/covers/22037377.jpg'],
-  content: [
-    {
-      type: 'BookReview',
-      book: {
-        'coverUrl': '/images/covers/15801353.jpg',
-        'title': 'Aristotle and Dante Discover the Secrets of the Universe',
-        'author': 'Benjamin Alire Sáenz',
-        'color': '#87cdde',
-      },
-      rating: 5,
-      text: `${reviewText}
-
-${reviewText}`,
-    },
-    {
-      type: 'BookReview',
-      book: {
-        'coverUrl': '/images/covers/17756559.jpg',
-        'title': 'The Winner’s Curse',
-        'author': 'Marie Rutkoski',
-        'color': '#a02c2c',
-      },
-      rating: 2,
-      text: reviewText,
-      alignRight: true,
-    },
-  ],
-};
 
 const contentTypes = { BookReview, Image, Text };
 
@@ -69,16 +28,34 @@ const elementForContentType = (item) => {
 class Post extends React.Component {
   state = {
     appear: false,
+    post: {
+      title: '',
+      date: '',
+      intro: '',
+      books: [],
+      content: [],
+    },
+    navigation: {},
+    comments: [],
   };
 
   componentDidMount = () => {
     window.scrollTo(0, 0);
-    window.setTimeout(() => this.setState({ appear: true }), 0);
+
+    const { post } = this.state;
+    getPost(42, (error, json) => {
+      if (!error) {
+        const { post, navigation, comments } = json;
+        this.setState({ post, navigation, comments });
+        window.setTimeout(() => this.setState({ appear: true }), 0);
+      }
+    });
   }
 
   render = () => {
-    const { title, date, intro, books, content } = data;
-    const className = this.state.appear ? 'appear' : '';
+    const { appear, post, navigation, comments } = this.state;
+    const className = appear ? 'appear' : '';
+    const { title, date, intro, books, content } = post
 
     return (
       <div className={`post ${className}`}>
@@ -95,8 +72,8 @@ class Post extends React.Component {
           </header>
           <div className='post-intro'>{marked(intro)}</div>
           {content.map((item, n) => elementForContentType({...item, key: n}))}
-          <Navigation />
-          <Comments />
+          <Navigation {...navigation} />
+          <Comments comments={comments} />
         </article>
         <Footer />
       </div>

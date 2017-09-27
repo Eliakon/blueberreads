@@ -8,4 +8,9 @@ urlpatterns = [
         views.Posts.as_view(),
         name='posts',
     ),
+    url(
+        r'^post/$',
+        views.Post.as_view(),
+        name='post',
+    ),
 ]
