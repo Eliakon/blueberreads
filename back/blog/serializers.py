@@ -6,7 +6,7 @@ from .models import Book, CurrentlyReading
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
-        fields = '__all__'
+        fields = ['title', 'author', 'color', 'cover_url']
 
 class CurrentlyReadingSerializer(serializers.ModelSerializer):
     book = BookSerializer()

@@ -1,4 +1,5 @@
 from django.db import models
+from django.http import HttpRequest
 
 ALIGN_CHOICES = (
     ('left', 'left'),
@@ -10,6 +11,10 @@ class Book(models.Model):
     author = models.CharField(max_length=200)
     color = models.CharField(max_length=6)
     cover = models.ImageField()
+
+    @property
+    def cover_url(self):
+        return self.cover.url
 
     def __str__(self):
         return '{0} by {1}'.format(self.title, self.author)
@@ -40,11 +45,12 @@ class BookReviewPostContent(PostContent):
         verbose_name_plural = 'Book reviews (content)'
 
 class Post(models.Model):
-    slug = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200)
     title = models.CharField(max_length=200)
     date = models.DateTimeField()
     intro = models.TextField()
     books = models.ManyToManyField('Book', related_name='posts')
+    published = models.BooleanField(default=False)
 
 class CurrentlyReading(models.Model):
     book = models.ForeignKey('Book', related_name='currently_reading')

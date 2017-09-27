@@ -1,6 +1,6 @@
 import request from 'request';
 
-const host = 'http://localhost:8000';
+export const host = 'http://localhost:8000';
 const r = request.defaults({ json: true });
 
 export const getPosts = (page, callback) => {
