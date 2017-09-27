@@ -6,10 +6,6 @@
   transition: height .3s;
 }
 
-.banner-small {
-  height: 5rem;
-}
-
 .banner img {
   max-height: 100%;
 }

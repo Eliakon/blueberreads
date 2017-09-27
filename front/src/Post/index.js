@@ -9,6 +9,7 @@ import BookReview from './BookReview';
 import Comments from './Comments';
 import Image from './Image';
 import Navigation from './Navigation';
+import Spinner from '../Spinner';
 import Text from './Text';
 
 import './Post.css'
@@ -40,14 +41,15 @@ class Post extends React.Component {
   };
 
   componentDidMount = () => {
-    window.scrollTo(0, 0);
-
     const { post } = this.state;
+
     getPost(42, (error, json) => {
       if (!error) {
         const { post, navigation, comments } = json;
+
         this.setState({ post, navigation, comments });
         window.setTimeout(() => this.setState({ appear: true }), 0);
+        window.scrollTo(0, 0);
       }
     });
   }
@@ -76,6 +78,7 @@ class Post extends React.Component {
           <Comments comments={comments} />
         </article>
         <Footer />
+        <Spinner show={!appear} />
       </div>
     );
   };
