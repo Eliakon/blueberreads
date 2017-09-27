@@ -22,7 +22,6 @@ class Home extends React.Component {
     getPosts(page, (error, json) => {
       if (!error) {
         const { currentlyReading, latestPosts } = json;
-        console.log('JSON', json)
 
         this.setState({ currentlyReading, latestPosts });
         window.setTimeout(() => this.setState({ appear: true }), 0);

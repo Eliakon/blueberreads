@@ -40,6 +40,9 @@ class BookReviewPostContent(PostContent):
     text = models.TextField()
     align = models.CharField(max_length=5, choices=ALIGN_CHOICES)
 
+    def __str__(self):
+        return '{0} by {1} (in {2})'.format(self.book.title, self.book.author, self.post.title)
+
     class Meta:
         verbose_name = 'Book review (content)'
         verbose_name_plural = 'Book reviews (content)'
@@ -51,6 +54,9 @@ class Post(models.Model):
     intro = models.TextField()
     books = models.ManyToManyField('Book', related_name='posts')
     published = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
 
 class CurrentlyReading(models.Model):
     book = models.ForeignKey('Book', related_name='currently_reading')
