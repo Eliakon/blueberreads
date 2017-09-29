@@ -20,28 +20,47 @@ class Book(models.Model):
         return '{0} by {1}'.format(self.title, self.author)
 
 class PostContent(models.Model):
+    content_type = models.CharField(max_length=100)
     order = models.SmallIntegerField()
+    post = models.ForeignKey('Post', related_name='content', on_delete=models.CASCADE)
 
-    class Meta:
-        abstract = True
+    def specialize(self):
+        if self.content_type == 'text':
+            return TextPostContent.objects.get(id=self.id)
+        if self.content_type == 'book_review':
+            return BookReviewPostContent.objects.get(id=self.id)
+        return self
+
+    def __str__(self):
+        return '{0} - Content'.format(self.order)
 
 class TextPostContent(PostContent):
-    post = models.ForeignKey('Post', related_name='text_content', on_delete=models.CASCADE)
     text = models.TextField()
+
+    def save(self, *args, **kwargs):
+        self.content_type = 'text'
+        super(TextPostContent, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return '[{0}] Text ({1}): {2}'.format(self.order, self.id, self.text[:200])
 
     class Meta:
         verbose_name = 'Text (content)'
         verbose_name_plural = 'Texts (content)'
 
 class BookReviewPostContent(PostContent):
-    post = models.ForeignKey('Post', related_name='book_review_content', on_delete=models.CASCADE)
     book = models.ForeignKey('Book', related_name='book_review')
     rating = models.SmallIntegerField()
     text = models.TextField()
     align = models.CharField(max_length=5, choices=ALIGN_CHOICES)
 
+    def save(self, *args, **kwargs):
+        self.content_type = 'book_review'
+        super(BookReviewPostContent, self).save(*args, **kwargs)
+
     def __str__(self):
-        return '{0} by {1} (in {2})'.format(self.book.title, self.book.author, self.post.title)
+        return '[{0}] Book review ({1}): {2} by {3} align-{4}'.format(
+            self.order, self.id, self.book.title, self.book.author, self.align)
 
     class Meta:
         verbose_name = 'Book review (content)'
@@ -52,8 +71,19 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     date = models.DateTimeField()
     intro = models.TextField()
-    books = models.ManyToManyField('Book', related_name='posts')
     published = models.BooleanField(default=False)
+
+    @property
+    def display_date(self):
+        return self.date.strftime('%m-%d-%Y')
+
+    @property
+    def books(self):
+        book_reviews = self.content.filter(content_type='book_review')
+        covers = []
+        for review in book_reviews:
+            covers.append(review.specialize().book.cover_url)
+        return covers
 
     def __str__(self):
         return self.title

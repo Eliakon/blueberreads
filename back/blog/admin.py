@@ -1,23 +1,35 @@
 from django.contrib import admin
-from .models import Book, TextPostContent, BookReviewPostContent, Post, CurrentlyReading
+from django.utils.html import format_html_join
+from django.utils.safestring import mark_safe
 
+from .models import Book, PostContent, TextPostContent, BookReviewPostContent, Post, CurrentlyReading
+
+@admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     pass
 
+@admin.register(TextPostContent)
 class TextPostContentAdmin(admin.ModelAdmin):
-    pass
+    exclude = ('content_type',)
 
+@admin.register(BookReviewPostContent)
 class BookReviewPostContentAdmin(admin.ModelAdmin):
-    pass
+    exclude = ('content_type',)
 
+@admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    pass
+    readonly_fields = ('content',)
 
+    def content(self, instance):
+        content = instance.content.all().order_by('order')
+        print('content={0}'.format(content[0]))
+        print('specialized content={0}'.format(content[0].specialize()))
+        return format_html_join(
+            mark_safe('<br/>'),
+            '{}',
+            ((c.specialize(),) for c in content),
+        ) or mark_safe("<span class='errors'>No content yet.</span>")
+
+@admin.register(CurrentlyReading)
 class CurrentlyReadingAdmin(admin.ModelAdmin):
     pass
-
-admin.site.register(Book, BookAdmin)
-admin.site.register(TextPostContent, TextPostContentAdmin)
-admin.site.register(BookReviewPostContent, BookReviewPostContentAdmin)
-admin.site.register(Post, PostAdmin)
-admin.site.register(CurrentlyReading, CurrentlyReadingAdmin)

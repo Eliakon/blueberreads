@@ -31,7 +31,7 @@ class Post extends React.Component {
     appear: false,
     post: {
       title: '',
-      date: '',
+      displayDate: '',
       intro: '',
       books: [],
       content: [],
@@ -57,7 +57,7 @@ class Post extends React.Component {
   render = () => {
     const { appear, post, navigation, comments } = this.state;
     const className = appear ? 'appear' : '';
-    const { title, date, intro, books, content } = post
+    const { title, displayDate, intro, books, content } = post
 
     return (
       <div className={`post ${className}`}>
@@ -66,7 +66,7 @@ class Post extends React.Component {
           <header>
             <div className="title">
               <h1>{title}</h1>
-              <span className="date">{date}</span>
+              <span className="date">{displayDate}</span>
             </div>
             <div className="books">
               {books.map((coverUrl, n) => <img key={n} src={coverUrl} alt="" style={{animationDelay: `.${n}s`}} />)}

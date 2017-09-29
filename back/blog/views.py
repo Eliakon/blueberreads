@@ -1,8 +1,8 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import CurrentlyReading
-from .serializers import CurrentlyReadingSerializer
+from . import models
+from . import serializers
 
 latest_posts_mock = [
     {
@@ -119,16 +119,27 @@ post_comments_mock = [
 
 class Posts(APIView):
     def get(self, request):
-        page = request.GET.get('page', 0)
+        try:
+            page = int(request.GET.get('page'))
+        except Exception:
+            page = 0
 
-        currently_reading = CurrentlyReadingSerializer(
-            CurrentlyReading.objects.last()
+        currently_reading = serializers.CurrentlyReadingSerializer(
+            models.CurrentlyReading.objects.last()
+        ).data
+
+        posts_per_page = 3
+        first_post_id = page * posts_per_page
+        last_post_id = first_post_id + posts_per_page
+        latest_posts = serializers.PostSummary(
+            models.Post.objects.all().order_by('date')[first_post_id:last_post_id],
+            many=True
         ).data
 
         return Response({
             'page': page,
-            'currentlyReading': currently_reading['book'],
-            'latestPosts': latest_posts_mock,
+            'currently_reading': currently_reading['book'],
+            'latest_posts': latest_posts,
         })
 
 class Post(APIView):

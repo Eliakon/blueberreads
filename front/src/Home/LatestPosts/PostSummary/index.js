@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import marked from 'react-marked';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
+import { host } from '../../../API';
 
 import './PostSummary.css';
 
-const PostSummary = ({ id, slug, title, date, intro, books }) => {
+const PostSummary = ({ id, slug, title, displayDate, intro, books }) => {
   const postUrl = `/post/${id}-${slug}`;
 
   const book = (url, n) => {
@@ -15,7 +17,7 @@ const PostSummary = ({ id, slug, title, date, intro, books }) => {
       left: `${4 + wOffset * (books.length - n - 1)}rem`,
       top: `${5 - hOffset * (books.length - n - 1)}rem`,
     };
-    return (<img key={n} src={url} alt="" style={style} />);
+    return (<img key={n} src={`${host}${url}`} alt="" style={style} />);
   }
 
   return (
@@ -24,7 +26,7 @@ const PostSummary = ({ id, slug, title, date, intro, books }) => {
         <h1>
           <Link to={postUrl}>{title}</Link>
         </h1>
-        <span className="date">{date}</span>
+        <span className="date">{displayDate}</span>
         <div>{marked(intro)}</div>
         <Link to={postUrl} className="post-link">Read more</Link>
       </div>
@@ -39,7 +41,7 @@ PostSummary.propTypes = {
   id: PropTypes.number,
   slug: PropTypes.string,
   title: PropTypes.string,
-  date: PropTypes.string,
+  displayDate: PropTypes.string,
   intro: PropTypes.string,
   books: PropTypes.array,
 };
