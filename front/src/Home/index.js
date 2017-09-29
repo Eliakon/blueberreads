@@ -14,6 +14,9 @@ class Home extends React.Component {
     appear: false,
     page: 0,
     currentlyReading: {},
+    latestPosts: [],
+    hasPrevious: false,
+    hasNext: false,
   };
 
   componentDidMount = () => {
@@ -21,9 +24,15 @@ class Home extends React.Component {
 
     getPosts(page, (error, json) => {
       if (!error) {
-        const { currentlyReading, latestPosts } = json;
+        const { currentlyReading, latestPosts, hasPrevious, hasNext } = json;
 
-        this.setState({ currentlyReading, latestPosts });
+        this.setState({
+          page: json.page,
+          currentlyReading,
+          latestPosts,
+          hasPrevious,
+          hasNext,
+        });
         window.setTimeout(() => this.setState({ appear: true }), 0);
         window.scrollTo(0, 0);
       }
@@ -31,7 +40,7 @@ class Home extends React.Component {
   }
 
   render = () => {
-    const { appear, currentlyReading, latestPosts } = this.state;
+    const { appear, page, currentlyReading, latestPosts, hasPrevious, hasNext } = this.state;
     const className = appear ? 'appear' : '';
 
     return (
@@ -39,7 +48,7 @@ class Home extends React.Component {
         <Banner />
         <div className="content">
           <CurrentlyReading className={className} {...currentlyReading} />
-          <LatestPosts className={className} posts={latestPosts} />
+          <LatestPosts className={className} posts={latestPosts} page={page} hasPrevious={hasPrevious} hasNext={hasNext} />
         </div>
         <Footer />
         <Spinner show={!appear} />

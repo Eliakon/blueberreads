@@ -5,16 +5,17 @@ import { Link } from 'react-router-dom';
 
 import './Pagination.css';
 
-const Pagination = ({ olderLink, newerLink }) => (
+const Pagination = ({ page, hasPrevious, hasNext }) => (
   <div className="pagination">
-    <Link className={`pagination-link older ${olderLink ? '' : 'disabled'}`} to={olderLink}>Older posts</Link>
-    <Link className={`pagination-link newer ${newerLink ? '' : 'disabled'}`} to={newerLink}>Newer posts</Link>
+    <Link className={`pagination-link older ${hasPrevious ? '' : 'disabled'}`} to={`/page/${page - 1}`}>Older posts</Link>
+    <Link className={`pagination-link newer ${hasNext ? '' : 'disabled'}`} to={`/page/${page + 1}`}>Newer posts</Link>
   </div>
 );
 
 Pagination.propTypes = {
-  olderLink: PropTypes.string,
-  newerLink: PropTypes.string,
+  page: PropTypes.number,
+  hasPrevious: PropTypes.bool,
+  hasNext: PropTypes.bool,
 };
 
 export default Pagination;
