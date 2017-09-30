@@ -45,6 +45,7 @@ class Post extends React.Component {
   state = {
     appear: false,
     post: {
+      id: -1,
       title: '',
       displayDate: '',
       intro: '',
@@ -56,9 +57,23 @@ class Post extends React.Component {
   };
 
   componentDidMount = () => {
-    const { post } = this.state;
     const { id } = this.props.match.params;
 
+    this.getPost(id);
+  };
+
+  componentDidUpdate = () => {
+    const { id: routeId } = this.props.match.params;
+    const { appear, post } = this.state;
+    const { id: stateId } = post;
+
+    if (appear && routeId != stateId) {
+      this.setState({ appear: false });
+      this.getPost(routeId);
+    }
+  };
+
+  getPost = (id) => {
     getPost(id, (error, json) => {
       if (!error) {
         const { post, navigation, comments } = json;
@@ -68,7 +83,7 @@ class Post extends React.Component {
         window.scrollTo(0, 0);
       }
     });
-  }
+  };
 
   render = () => {
     const { appear, post, navigation, comments } = this.state;
