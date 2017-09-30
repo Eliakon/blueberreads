@@ -97,3 +97,14 @@ class CurrentlyReading(models.Model):
 
     def __str__(self):
         return '{0} by {1}'.format(self.book.title, self.book.author)
+
+class Comment(models.Model):
+    pseudo = models.CharField(max_length=30)
+    website = models.CharField(max_length=100)
+    twitter = models.CharField(max_length=30)
+    text = models.TextField()
+    date = models.DateTimeField(auto_now=True)
+    post = models.ForeignKey(Post, related_name='comments')
+
+    def __str__(self):
+        return 'Comment by {0} at {1}'.format(pseudo, date)

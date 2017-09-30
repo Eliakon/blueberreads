@@ -2,21 +2,21 @@ from django.contrib import admin
 from django.utils.html import format_html_join
 from django.utils.safestring import mark_safe
 
-from .models import Book, PostContent, TextPostContent, BookReviewPostContent, Post, CurrentlyReading
+from . import models
 
-@admin.register(Book)
+@admin.register(models.Book)
 class BookAdmin(admin.ModelAdmin):
     pass
 
-@admin.register(TextPostContent)
+@admin.register(models.TextPostContent)
 class TextPostContentAdmin(admin.ModelAdmin):
     exclude = ('content_type',)
 
-@admin.register(BookReviewPostContent)
+@admin.register(models.BookReviewPostContent)
 class BookReviewPostContentAdmin(admin.ModelAdmin):
     exclude = ('content_type',)
 
-@admin.register(Post)
+@admin.register(models.Post)
 class PostAdmin(admin.ModelAdmin):
     readonly_fields = ('content',)
 
@@ -28,6 +28,10 @@ class PostAdmin(admin.ModelAdmin):
             ((c.specialize(),) for c in content),
         ) or mark_safe("<span class='errors'>No content yet.</span>")
 
-@admin.register(CurrentlyReading)
+@admin.register(models.CurrentlyReading)
 class CurrentlyReadingAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(models.Comment)
+class CommentAdmin(admin.ModelAdmin):
     pass
