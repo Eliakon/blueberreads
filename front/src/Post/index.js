@@ -13,6 +13,8 @@ import Navigation from './Navigation';
 import Spinner from '../Spinner';
 import Text from './Text';
 
+import { host } from '../API';
+
 import './Post.css'
 
 
@@ -100,7 +102,7 @@ class Post extends React.Component {
               <span className="date">{displayDate}</span>
             </div>
             <div className="books">
-              {books.map((coverUrl, n) => <img key={n} src={coverUrl} alt="" style={{animationDelay: `.${n}s`}} />)}
+              {books.map((coverUrl, n) => <img key={n} src={`${host}${coverUrl}`} alt="" style={{animationDelay: `.${n}s`}} />)}
             </div>
           </header>
           <div className='post-intro'>{marked(intro)}</div>
