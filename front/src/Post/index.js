@@ -69,7 +69,11 @@ class Post extends React.Component {
     const { appear, post } = this.state;
     const { id: stateId } = post;
 
-    if (appear && routeId != stateId) {
+    if (!appear) {
+      return;
+    }
+
+    if (routeId != stateId) {
       this.setState({ appear: false });
       this.getPost(routeId);
     }

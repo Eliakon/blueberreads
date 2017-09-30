@@ -19,7 +19,7 @@ const PostSummary = ({ id, slug, title, date, books, sectionTitle }) => {
           </h1>
           <span className="date">{date}</span>
           <div className="books">
-            {books.map((url, n) => <div className="book"><img src={`${host}${url}`} key={n} /></div>)}
+            {books.map((url, n) => <div className="book"><img src={`${host}${url}`} alt="" key={n} /></div>)}
           </div>
         </div>
         <Link to={postUrl} className="post-link">Read more</Link>

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import { getPosts } from '../API';
@@ -10,6 +11,20 @@ import Spinner from '../Spinner';
 import './Home.css'
 
 class Home extends React.Component {
+  static propTypes = {
+    match: PropTypes.object,
+    history: PropTypes.object,
+  };
+
+  static defaultProps = {
+    match: {
+      params: {},
+    },
+    history: {
+      push: () => {},
+    },
+  };
+
   state = {
     appear: false,
     page: 0,
@@ -20,8 +35,27 @@ class Home extends React.Component {
   };
 
   componentDidMount = () => {
-    const { page } = this.state;
+    const { page:routePage } = this.props.match.params;
+    const page = parseInt(routePage) || 1;
 
+    this.getPosts(page);
+  };
+
+  componentDidUpdate = () => {
+    const { page: routePage } = this.props.match.params;
+    const { appear, page:statePage } = this.state;
+
+    if (!appear || statePage < 1 || !routePage) {
+      return;
+    }
+
+    if (routePage != statePage) {
+      this.setState({ appear: false });
+      this.getPosts(routePage);
+    }
+  };
+
+  getPosts = (page) => {
     getPosts(page, (error, json) => {
       if (!error) {
         const { currentlyReading, latestPosts, hasPrevious, hasNext } = json;
@@ -33,11 +67,18 @@ class Home extends React.Component {
           hasPrevious,
           hasNext,
         });
+
+        const { match, history } = this.props;
+        const { page: routePage } = match.params
+        if (routePage && routePage != json.page) {
+          history.push(`/page/${json.page}`);
+        }
+
         window.setTimeout(() => this.setState({ appear: true }), 0);
         window.scrollTo(0, 0);
       }
     });
-  }
+  };
 
   render = () => {
     const { appear, page, currentlyReading, latestPosts, hasPrevious, hasNext } = this.state;

@@ -41,18 +41,18 @@ class Posts(APIView):
         try:
             page = int(request.GET.get('page'))
         except Exception:
-            page = 0
+            page = 1
 
         posts_count = models.Post.objects.count()
         posts_per_page = 3
-        last_page = int(posts_count / posts_per_page)
-        page = min(last_page, max(0, page))
+        last_page = int(posts_count / posts_per_page) + 1
+        page = min(last_page, max(1, page))
 
         currently_reading = serializers.CurrentlyReadingSerializer(
             models.CurrentlyReading.objects.last(),
         ).data
 
-        first_post_id = page * posts_per_page
+        first_post_id = (page - 1) * posts_per_page
         last_post_id = first_post_id + posts_per_page
         latest_posts = serializers.PostSummary(
             models.Post.objects.all().order_by('date')[first_post_id:last_post_id],
@@ -63,7 +63,7 @@ class Posts(APIView):
             'page': page,
             'currently_reading': currently_reading['book'],
             'latest_posts': latest_posts,
-            'has_previous': page > 0,
+            'has_previous': page > 1,
             'has_next': page < last_page,
         })
 
