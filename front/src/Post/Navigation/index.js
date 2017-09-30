@@ -7,8 +7,8 @@ import './Navigation.css';
 
 const Navigation = ({ previous, next }) => (
   <footer className="post-navigation">
-    {previous ? <PostSummary {...previous} sectionTitle="Previous post" /> : null}
-    {next ? <PostSummary {...next} sectionTitle="Next post" /> : null}
+    {previous ? <PostSummary {...previous} sectionTitle="Previous post" /> : <div />}
+    {next ? <PostSummary {...next} sectionTitle="Next post" /> : <div />}
   </footer>
 );
 

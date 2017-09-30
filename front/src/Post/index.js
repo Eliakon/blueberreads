@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import marked from 'react-marked';
 
@@ -15,18 +16,32 @@ import Text from './Text';
 import './Post.css'
 
 
-const contentTypes = { BookReview, Image, Text };
+const contentTypes = {
+  'book_review': BookReview,
+  'image': Image,
+  'text': Text,
+};
 
 const elementForContentType = (item) => {
-  const type = contentTypes[item.type];
+  const type = contentTypes[item.contentType];
 
   if (type) {
     return type({...item});
   }
-  console.log('post content type unknown:', item.type);
+  console.log('post content type unknown:', item.contentType);
 }
 
 class Post extends React.Component {
+  static propTypes = {
+    match: PropTypes.object,
+  };
+
+  static defaultProps = {
+    match: {
+      params: {},
+    },
+  };
+
   state = {
     appear: false,
     post: {
@@ -34,7 +49,7 @@ class Post extends React.Component {
       displayDate: '',
       intro: '',
       books: [],
-      content: [],
+      orderedContent: [],
     },
     navigation: {},
     comments: [],
@@ -42,8 +57,9 @@ class Post extends React.Component {
 
   componentDidMount = () => {
     const { post } = this.state;
+    const { id } = this.props.match.params;
 
-    getPost(42, (error, json) => {
+    getPost(id, (error, json) => {
       if (!error) {
         const { post, navigation, comments } = json;
 
@@ -57,7 +73,7 @@ class Post extends React.Component {
   render = () => {
     const { appear, post, navigation, comments } = this.state;
     const className = appear ? 'appear' : '';
-    const { title, displayDate, intro, books, content } = post
+    const { title, displayDate, intro, books, orderedContent } = post
 
     return (
       <div className={`post ${className}`}>
@@ -73,7 +89,7 @@ class Post extends React.Component {
             </div>
           </header>
           <div className='post-intro'>{marked(intro)}</div>
-          {content.map((item, n) => elementForContentType({...item, key: n}))}
+          {orderedContent.map((item, n) => elementForContentType({...item, key: n}))}
           <Navigation {...navigation} />
           <Comments comments={comments} />
         </article>

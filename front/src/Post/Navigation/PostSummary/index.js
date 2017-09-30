@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { host } from '../../../API';
+
 import './PostSummary.css';
 
 const PostSummary = ({ id, slug, title, date, books, sectionTitle }) => {
@@ -17,7 +19,7 @@ const PostSummary = ({ id, slug, title, date, books, sectionTitle }) => {
           </h1>
           <span className="date">{date}</span>
           <div className="books">
-            {books.map((url, n) => <div className="book"><img src={url} key={n} /></div>)}
+            {books.map((url, n) => <div className="book"><img src={`${host}${url}`} key={n} /></div>)}
           </div>
         </div>
         <Link to={postUrl} className="post-link">Read more</Link>

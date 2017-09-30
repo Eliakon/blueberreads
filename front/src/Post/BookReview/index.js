@@ -3,10 +3,11 @@ import React from 'react';
 import marked from 'react-marked';
 
 import Icon from '../../Icon';
+import { host } from '../../API';
 
 import './BookReview.css';
 
-const BookReview = ({ book, rating, text, alignRight }) => {
+const BookReview = ({ book, rating, text, align }) => {
   const { coverUrl, title, author, color } = book;
 
   const star = (filled, key) => (
@@ -16,8 +17,8 @@ const BookReview = ({ book, rating, text, alignRight }) => {
   );
 
   return (
-    <div className={`post-book-review ${alignRight ? 'right' : ''}`}>
-      <article className="book" style={{backgroundColor: color}}>
+    <div className={`post-book-review ${align}`}>
+      <article className="book" style={{backgroundColor: `#${color}`}}>
         <h1>{title}</h1>
         <div className="book-data">
           <div className="author-and-rating">
@@ -27,7 +28,7 @@ const BookReview = ({ book, rating, text, alignRight }) => {
             </div>
           </div>
           <div className="cover">
-            <img src={coverUrl} alt="" />
+            <img src={`${host}${coverUrl}`} alt="" />
           </div>
         </div>
       </article>

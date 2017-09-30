@@ -85,6 +85,10 @@ class Post(models.Model):
             covers.append(review.specialize().book.cover_url)
         return covers
 
+    @property
+    def ordered_content(self):
+        return self.content.order_by('order')
+
     def __str__(self):
         return self.title
 

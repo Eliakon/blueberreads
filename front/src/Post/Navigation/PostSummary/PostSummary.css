@@ -19,6 +19,7 @@
 
 .navigation-post-summary .summary .books {
   display: flex;
+  height: 7rem;
 }
 
 .navigation-post-summary .summary .books .book {

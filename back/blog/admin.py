@@ -22,8 +22,6 @@ class PostAdmin(admin.ModelAdmin):
 
     def content(self, instance):
         content = instance.content.all().order_by('order')
-        print('content={0}'.format(content[0]))
-        print('specialized content={0}'.format(content[0].specialize()))
         return format_html_join(
             mark_safe('<br/>'),
             '{}',
