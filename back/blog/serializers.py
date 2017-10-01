@@ -41,9 +41,15 @@ class PostContentSerializer(serializers.RelatedField):
             content = models.BookReviewPostContent.objects.get(id=value.id)
             return BookReviewPostContentSerializer(content).data
 
-class Post(serializers.ModelSerializer):
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Comment
+        fields = ['pseudo', 'website', 'twitter', 'text', 'display_date', 'is_admin']
+
+class PostSerializer(serializers.ModelSerializer):
+    comments = CommentSerializer(many=True)
     ordered_content = PostContentSerializer(many=True, read_only=True)
 
     class Meta:
         model = models.Post
-        fields = ['id', 'slug', 'title', 'display_date', 'intro', 'books', 'ordered_content']
+        fields = ['id', 'slug', 'title', 'display_date', 'intro', 'books', 'ordered_content', 'comments']

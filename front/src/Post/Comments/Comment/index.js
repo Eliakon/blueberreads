@@ -6,12 +6,12 @@ import Icon from '../../../Icon';
 
 import './Comment.css';
 
-const Comment = ({ pseudo, date, website, twitter, text, isAdmin }) => (
+const Comment = ({ pseudo, displayDate, website, twitter, text, isAdmin }) => (
   <div className={`post-comment ${isAdmin ? 'admin' : ''}`}>
     <div className="avatar-and-pseudo">
       <div>
         <h3 className="pseudo">{pseudo}</h3>
-        <span className="date">{date}</span>
+        <span className="date">{displayDate}</span>
         <div className="links">
           {website ? <a href={website} target="_blank"><Icon type="Link" size="20" /></a> : null}
           {twitter ? <a href={`http://twitter.com/${twitter}`} target="_blank"><Icon type="Twitter" size="20" /></a> : null}
@@ -25,7 +25,7 @@ const Comment = ({ pseudo, date, website, twitter, text, isAdmin }) => (
 
 Comment.propTypes = {
   pseudo: PropTypes.string,
-  date: PropTypes.string,
+  displayDate: PropTypes.string,
   website: PropTypes.string,
   twitter: PropTypes.string,
   text: PropTypes.string,

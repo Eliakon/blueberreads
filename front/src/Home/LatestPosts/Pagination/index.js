@@ -7,8 +7,8 @@ import './Pagination.css';
 
 const Pagination = ({ page, hasPrevious, hasNext }) => (
   <div className="pagination">
-    <Link className={`pagination-link older ${hasPrevious ? '' : 'disabled'}`} to={`/page/${page - 1}`}>Older posts</Link>
-    <Link className={`pagination-link newer ${hasNext ? '' : 'disabled'}`} to={`/page/${page + 1}`}>Newer posts</Link>
+    <Link className={`pagination-link newer ${hasNext ? '' : 'disabled'}`} to={`/page/${page - 1}`}>Newer posts</Link>
+    <Link className={`pagination-link older ${hasPrevious ? '' : 'disabled'}`} to={`/page/${page + 1}`}>Older posts</Link>
   </div>
 );
 

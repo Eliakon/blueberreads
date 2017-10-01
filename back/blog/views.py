@@ -8,34 +8,6 @@ from . import models
 from . import serializers
 
 
-post_comments_mock = [
-    {
-      'pseudo': 'Potichat',
-      'website': 'http://icanhas.cheezburger.com',
-      'text': 'Meow, meow :3',
-      'date': '1 day ago',
-    },
-    {
-      'pseudo': 'Mallow le chat',
-      'text': 'However, I had very little insterest in the characters: they seemed pretty one-dimensional to me.\n\nThe romance made no sense, and the colony/slavery theme made me really uncomfortable. Stockholm Syndrome and shit.',
-      'date': '1 year ago',
-    },
-    {
-      'pseudo': 'Chuck Norris',
-      'website': 'http://chucknorris.com/',
-      'twitter': 'chucknorris',
-      'text': 'Amazing.',
-      'date': '12 hours ago',
-    },
-    {
-      'pseudo': 'Blueberreads',
-      'text': 'However, I had very little insterest in the characters: they seemed pretty one-dimensional to me. The romance made no sense, and the colony/slavery theme made me really uncomfortable. Stockholm Syndrome and shit.',
-      'date': '15 minutes ago',
-      'isAdmin': True,
-    },
-]
-
-
 class Posts(APIView):
     def get(self, request):
         try:
@@ -55,7 +27,7 @@ class Posts(APIView):
         first_post_id = (page - 1) * posts_per_page
         last_post_id = first_post_id + posts_per_page
         latest_posts = serializers.PostSummary(
-            models.Post.objects.all().order_by('date')[first_post_id:last_post_id],
+            models.Post.objects.all().order_by('-date')[first_post_id:last_post_id],
             many=True,
         ).data
 
@@ -63,15 +35,15 @@ class Posts(APIView):
             'page': page,
             'currently_reading': currently_reading['book'],
             'latest_posts': latest_posts,
-            'has_previous': page > 1,
-            'has_next': page < last_page,
+            'has_previous': page < last_page,
+            'has_next': page > 1,
         })
 
 class Post(APIView):
     def get(self, request):
         post_id = request.GET.get('id')
         post = get_object_or_404(models.Post, id=post_id)
-        serialized_post = serializers.Post(post).data
+        serialized_post = serializers.PostSerializer(post).data
 
         navigation = { 'previous': {}, 'next': {} }
         try:
@@ -90,5 +62,4 @@ class Post(APIView):
         return Response({
             'post': serialized_post,
             'navigation': navigation,
-            'comments': post_comments_mock,
         })

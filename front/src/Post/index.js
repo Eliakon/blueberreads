@@ -53,9 +53,9 @@ class Post extends React.Component {
       intro: '',
       books: [],
       orderedContent: [],
+      comments: [],
     },
     navigation: {},
-    comments: [],
   };
 
   componentDidMount = () => {
@@ -82,9 +82,9 @@ class Post extends React.Component {
   getPost = (id) => {
     getPost(id, (error, json) => {
       if (!error) {
-        const { post, navigation, comments } = json;
+        const { post, navigation } = json;
 
-        this.setState({ post, navigation, comments });
+        this.setState({ post, navigation });
         window.setTimeout(() => this.setState({ appear: true }), 0);
         window.scrollTo(0, 0);
       }
@@ -92,7 +92,7 @@ class Post extends React.Component {
   };
 
   render = () => {
-    const { appear, post, navigation, comments } = this.state;
+    const { appear, post, navigation } = this.state;
     const className = appear ? 'appear' : '';
     const { title, displayDate, intro, books, orderedContent } = post
 
@@ -112,7 +112,7 @@ class Post extends React.Component {
           <div className='post-intro'>{marked(intro)}</div>
           {orderedContent.map((item, n) => elementForContentType({...item, key: n}))}
           <Navigation {...navigation} />
-          <Comments comments={comments} />
+          <Comments comments={post.comments} />
         </article>
         <Footer />
         <Spinner show={!appear} />

@@ -1,5 +1,50 @@
+from datetime import datetime, timezone
+
 from django.db import models
 from django.http import HttpRequest
+
+
+def pretty_date(time=False):
+    """
+    Get a datetime object or a int() Epoch timestamp and return a
+    pretty string like 'an hour ago', 'Yesterday', '3 months ago',
+    'just now', etc
+    """
+    now = datetime.now(timezone.utc)
+    if type(time) is int:
+        diff = now - datetime.fromtimestamp(time)
+    elif isinstance(time,datetime):
+        diff = now - time
+    elif not time:
+        diff = now - now
+    second_diff = diff.seconds
+    day_diff = diff.days
+
+    if day_diff < 0:
+        return ''
+
+    if day_diff == 0:
+        if second_diff < 10:
+            return "just now"
+        if second_diff < 60:
+            return str(second_diff) + " seconds ago"
+        if second_diff < 120:
+            return "a minute ago"
+        if second_diff < 3600:
+            return str(second_diff // 60) + " minutes ago"
+        if second_diff < 7200:
+            return "an hour ago"
+        if second_diff < 86400:
+            return str(second_diff // 3600) + " hours ago"
+    if day_diff == 1:
+        return "Yesterday"
+    if day_diff < 7:
+        return str(day_diff) + " days ago"
+    if day_diff < 31:
+        return str(day_diff // 7) + " weeks ago"
+    if day_diff < 365:
+        return str(day_diff // 30) + " months ago"
+    return str(day_diff // 365) + " years ago"
 
 ALIGN_CHOICES = (
     ('left', 'left'),
@@ -75,7 +120,7 @@ class Post(models.Model):
 
     @property
     def display_date(self):
-        return self.date.strftime('%m-%d-%Y')
+        return pretty_date(self.date)
 
     @property
     def books(self):
@@ -90,7 +135,7 @@ class Post(models.Model):
         return self.content.order_by('order')
 
     def __str__(self):
-        return self.title
+        return '{0} ({1})'.format(self.title, self.display_date)
 
 class CurrentlyReading(models.Model):
     book = models.ForeignKey('Book', related_name='currently_reading')
@@ -100,11 +145,16 @@ class CurrentlyReading(models.Model):
 
 class Comment(models.Model):
     pseudo = models.CharField(max_length=30)
-    website = models.CharField(max_length=100)
-    twitter = models.CharField(max_length=30)
+    website = models.CharField(max_length=100, null=True, blank=True)
+    twitter = models.CharField(max_length=30, null=True, blank=True)
     text = models.TextField()
     date = models.DateTimeField(auto_now=True)
     post = models.ForeignKey(Post, related_name='comments')
+    is_admin = models.BooleanField(default=False)
+
+    @property
+    def display_date(self):
+        return pretty_date(self.date)
 
     def __str__(self):
-        return 'Comment by {0} at {1}'.format(pseudo, date)
+        return 'Comment by {0} {1}'.format(self.pseudo, self.display_date)
