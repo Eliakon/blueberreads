@@ -1,4 +1,10 @@
-.post-navigation {
+.post-navigation > a {
+  display: block;
+  margin: 0 0 1rem;
+  font-size: 1.3rem;
+}
+
+.post-navigation footer {
   display: flex;
   justify-content: space-between;
   margin: 0 -5rem;

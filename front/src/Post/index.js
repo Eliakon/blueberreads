@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import marked from 'react-marked';
 
-import { getPost } from '../API';
+import { comment, getPost } from '../API';
 import Banner from '../Banner';
 import Footer from '../Footer';
 
@@ -56,6 +56,24 @@ class Post extends React.Component {
       comments: [],
     },
     navigation: {},
+    isSubmittingComment: false,
+    commentSubmitSuccess: false,
+  };
+
+  handleSubmitComment = (formValues) => {
+    const { id:postId } = this.state.post;
+    const data = { ...formValues, postId };
+
+    this.setState({ isSubmittingComment: true });
+    comment(data, (error, json) => {
+      if (!error) {
+        const { post } = json;
+
+        this.setState({ post, isSubmittingComment: false, commentSubmitSuccess: true });
+        return;
+      }
+      this.setState({ isSubmittingComment: false, commentSubmitSuccess: false });
+    });
   };
 
   componentDidMount = () => {
@@ -92,7 +110,7 @@ class Post extends React.Component {
   };
 
   render = () => {
-    const { appear, post, navigation } = this.state;
+    const { appear, post, navigation, isSubmittingComment, commentSubmitSuccess } = this.state;
     const className = appear ? 'appear' : '';
     const { title, displayDate, intro, books, orderedContent } = post
 
@@ -112,7 +130,12 @@ class Post extends React.Component {
           <div className='post-intro'>{marked(intro)}</div>
           {orderedContent.map((item, n) => elementForContentType({...item, key: n}))}
           <Navigation {...navigation} />
-          <Comments comments={post.comments} />
+          <Comments
+            comments={post.comments}
+            onSubmitComment={this.handleSubmitComment}
+            isSubmittingComment={isSubmittingComment}
+            commentSubmitSuccess={commentSubmitSuccess}
+          />
         </article>
         <Footer />
         <Spinner show={!appear} />

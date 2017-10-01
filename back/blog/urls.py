@@ -13,4 +13,9 @@ urlpatterns = [
         views.Post.as_view(),
         name='post',
     ),
+    url(
+        r'^comment/$',
+        views.Comment.as_view(),
+        name='comment',
+    ),
 ]

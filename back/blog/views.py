@@ -1,6 +1,7 @@
+import json
+
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
-
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -63,3 +64,25 @@ class Post(APIView):
             'post': serialized_post,
             'navigation': navigation,
         })
+
+class Comment(APIView):
+    def post(self, request):
+        data = json.loads(request.body.decode('utf-8'))
+        serialized_comment = serializers.CommentSerializer(data=data)
+
+        if not serialized_comment.is_valid():
+            return Response({ 'errors': serialized_comment.errors })
+
+        validated_data = serialized_comment.validated_data
+        post = get_object_or_404(models.Post, id=data['postId'])
+        models.Comment.objects.create(
+            pseudo = validated_data['pseudo'],
+            website = validated_data['website'],
+            twitter = validated_data['twitter'],
+            text = validated_data['text'],
+            post = post,
+        )
+
+        serialized_post = serializers.PostSerializer(post).data
+
+        return Response({ 'post': serialized_post })

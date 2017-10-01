@@ -149,7 +149,7 @@ class Comment(models.Model):
     twitter = models.CharField(max_length=30, null=True, blank=True)
     text = models.TextField()
     date = models.DateTimeField(auto_now=True)
-    post = models.ForeignKey(Post, related_name='comments')
+    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
     is_admin = models.BooleanField(default=False)
 
     @property

@@ -3,12 +3,22 @@ import request from 'request';
 export const host = 'http://localhost:8000';
 const r = request.defaults({ json: true });
 
-export const getPosts = (page, callback) => {
-  const url = `${host}/blog/posts/?page=${page}`;
+const getRequest = (url, callback) => {
   r.get(url, (error, response, body) => callback(error, body));
 };
 
+const postRequest = (url, body, callback) => {
+  r.post({url, body}, ((error, response, body) => callback(error, body)));
+};
+
+export const getPosts = (page, callback) => {
+  getRequest(`${host}/blog/posts/?page=${page}`, callback);
+};
+
 export const getPost = (id, callback) => {
-  const url = `${host}/blog/post/?id=${id}`;
-  r.get(url, (error, response, body) => callback(error, body));
+  getRequest(`${host}/blog/post/?id=${id}`, callback);
+};
+
+export const comment = (body, callback) => {
+  postRequest(`${host}/blog/comment/`, body, callback);
 };
