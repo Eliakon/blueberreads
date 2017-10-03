@@ -9,9 +9,10 @@
 .post-navigation > a::before {
   content: '';
   position: absolute;
-  width: 100%;
+  width: calc(100% - .1rem);
   height: 1px;
   top: 2rem;
+  left: .1rem;
   background-color: #1a1a1a;
   transform-origin: left;
   transform: scaleX(.2);
@@ -26,12 +27,12 @@
 .post-navigation > a::after {
   content: '';
   position: absolute;
-  top: 1.85rem;
+  top: 1.75rem;
   left: 0;
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: .2rem .4rem .2rem 0;
+  border-width: .3rem .6rem .3rem 0;
   border-color: transparent #1a1a1a transparent transparent;
   transition: border-color .3s;
 }
