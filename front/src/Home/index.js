@@ -9,6 +9,7 @@ import LatestPosts from './LatestPosts';
 import Spinner from '../Spinner';
 
 import './Home.css'
+import './HomeResponsive.css';
 
 class Home extends React.Component {
   static propTypes = {

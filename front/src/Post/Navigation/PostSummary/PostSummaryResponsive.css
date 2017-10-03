@@ -1,0 +1,11 @@
+/* Landscape tablets */
+@media (max-width: 1024px) {
+  .navigation-post-summary .summary .books {
+    height: 5rem;
+  }
+
+  .navigation-post-summary .summary .books .book {
+    height: 5rem;
+    margin-right: .2rem;
+  }
+}

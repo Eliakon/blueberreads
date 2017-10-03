@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { host } from '../../../API';
 
 import './PostSummary.css';
+import './PostSummaryResponsive.css';
 
 const PostSummary = ({ id, slug, title, date, books, sectionTitle }) => {
   const postUrl = `/post/${id}-${slug}`;

@@ -1,0 +1,19 @@
+/* Landscape tablets */
+@media (max-width: 1024px) {
+  .post > .content {
+    margin: 1.5rem 2rem;
+  }
+
+  .post > .content > header {
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .post > .content > header .books {
+    margin: 1rem 0 0 0;
+  }
+
+  .post > .content > header .books img {
+    margin: 0 .5rem 0 0;
+  }
+}

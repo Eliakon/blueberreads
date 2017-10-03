@@ -1,0 +1,29 @@
+/* Landscape tablets */
+@media (max-width: 1024px) {
+  .post-summary .content {
+    padding-right: 0;
+  }
+
+  .post-summary .not-desktop-books {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: .5rem;
+    height: 6rem;
+  }
+
+  .post-summary .not-desktop-books img {
+    height: 100%;
+    margin-right: .5rem;
+    filter: grayscale(100%);
+    transition: filter .3s, transform .3s;
+  }
+
+  .post-summary .not-desktop-books img:hover {
+    filter: grayscale(0);
+  }
+
+  .post-summary .content .post-link {
+    width: auto;
+  }
+}

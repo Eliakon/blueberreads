@@ -1,0 +1,16 @@
+/* Landscape tablets */
+@media (max-width: 1024px) {
+  .currently-reading {
+    position: relative;
+    width: 20%;
+  }
+
+  .currently-reading h1,
+  .currently-reading .book-title {
+    font-size: 1.6rem;
+  }
+
+  .currently-reading .book-author {
+    font-size: 1.2rem;
+  }
+}

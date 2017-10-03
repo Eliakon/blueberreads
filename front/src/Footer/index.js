@@ -3,6 +3,7 @@ import React from 'react';
 import Icon from '../Icon';
 
 import './Footer.css';
+import './FooterResponsive.css';
 
 const Footer = () => (
   <footer className="about">

@@ -1,0 +1,6 @@
+/* Landscape tablets */
+@media (max-width: 1024px) {
+  .post-comment .avatar-and-pseudo {
+    flex: 0 0 12rem;
+  }
+}

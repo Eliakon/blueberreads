@@ -5,6 +5,7 @@ import marked from 'react-marked';
 import Icon from '../../../Icon';
 
 import './Comment.css';
+import './CommentResponsive.css';
 
 const Comment = ({ pseudo, displayDate, website, twitter, text, isAdmin }) => (
   <div className={`post-comment ${isAdmin ? 'admin' : ''}`}>

@@ -6,6 +6,7 @@ import Icon from '../../Icon';
 import { host } from '../../API';
 
 import './BookReview.css';
+import './BookReviewResponsive.css';
 
 const BookReview = ({ book, rating, text, align }) => {
   const { coverUrl, title, author, color } = book;

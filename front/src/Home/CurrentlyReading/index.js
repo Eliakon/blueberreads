@@ -4,6 +4,7 @@ import React from 'react';
 import { host } from '../../API';
 
 import './CurrentlyReading.css';
+import './CurrentlyReadingResponsive.css';
 
 const CurrentlyReading = ({ className, title, author, color, coverUrl }) => (
   <article className={`currently-reading ${className}`}>

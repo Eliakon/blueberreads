@@ -16,6 +16,7 @@ import Text from './Text';
 import { host } from '../API';
 
 import './Post.css'
+import './PostResponsive.css'
 
 
 const contentTypes = {

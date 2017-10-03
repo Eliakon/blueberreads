@@ -1,0 +1,17 @@
+/* Landscape tablets */
+@media (max-width: 1024px) {
+  .about {
+    padding: 1rem 1rem;
+  }
+
+  .about .content {
+    flex-direction: column;
+    padding: 2rem 6rem;
+  }
+
+  .about .content .presentation {
+    width: inherit;
+    margin: 2rem 0 0;
+    text-align: center;
+  }
+}

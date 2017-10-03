@@ -1,0 +1,14 @@
+/* Landscape tablets */
+@media (max-width: 1024px) {
+  .post-book-review .book h1 {
+    font-size: 1.6rem;
+  }
+
+  .post-book-review .book .book-data h2 {
+    font-size: 1.4rem;
+  }
+
+  .post-book-review .text {
+    padding-left: 2rem;
+  }
+}

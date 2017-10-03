@@ -5,6 +5,7 @@ import Pagination from './Pagination';
 import PostSummary from './PostSummary';
 
 import './LatestPosts.css';
+import './LatestPostsResponsive.css';
 
 const LatestPosts = ({ className, posts, page, hasPrevious, hasNext }) => (
   <section className={`latest-posts ${className}`}>

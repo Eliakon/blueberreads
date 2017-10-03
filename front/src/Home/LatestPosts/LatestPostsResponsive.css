@@ -1,0 +1,11 @@
+/* Landscape tablets */
+@media (max-width: 1024px) {
+  .latest-posts {
+    margin: .5rem 2rem 0 6rem;
+  }
+
+  .latest-posts > h1 {
+    font-size: 1.8rem;
+    padding-bottom: .5rem;
+  }
+}
