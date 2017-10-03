@@ -9,3 +9,23 @@
     margin-right: .2rem;
   }
 }
+
+/* Landscape smartphones and portrait tablets */
+@media (max-width: 719px) {
+  .navigation-post-summary {
+    max-width: none;
+  }
+
+  .navigation-post-summary:not(:nth-child(1)) {
+    margin-top: 2rem;
+  }
+
+  .navigation-post-summary > h1 {
+    margin-bottom: .5rem;
+    font-size: 1.6rem;
+  }
+
+  .navigation-post-summary .summary h1 {
+    font-size: 1.3rem;
+  }
+}

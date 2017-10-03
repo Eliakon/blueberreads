@@ -14,3 +14,35 @@
     font-size: 1.2rem;
   }
 }
+
+/* Landscape smartphones and portrait tablets */
+@media (max-width: 719px) {
+  .currently-reading {
+    width: 100%;
+    height: auto;
+    text-align: center;
+  }
+
+  .currently-reading h1 {
+    margin: .5rem 0 -2rem 0;
+    font-size: 1.4rem;
+    text-align: left;
+  }
+
+  .currently-reading img {
+    position: static;
+    height: 15rem;
+    width: auto;
+    max-width: 80%;
+    transform: translateY(3rem);
+  }
+
+  .currently-reading.appear img {
+    transform: translateY(2rem);
+  }
+
+  .currently-reading .book-title,
+  .currently-reading .book-author {
+    display: none;
+  }
+}

@@ -1,7 +1,7 @@
 /* Landscape tablets */
 @media (max-width: 1024px) {
   .about {
-    padding: 1rem 1rem;
+    padding: 1rem;
   }
 
   .about .content {
@@ -13,5 +13,25 @@
     width: inherit;
     margin: 2rem 0 0;
     text-align: center;
+  }
+}
+
+/* Landscape smartphones and portrait tablets */
+@media (max-width: 719px) {
+  .about .content {
+    padding: 1rem;
+  }
+
+  .about .content > img {
+    width: 10rem;
+  }
+
+  .about .content .presentation {
+    margin: 1rem 0 0;
+  }
+
+  .about .content .presentation h2 {
+    font-size: 1.8rem;
+    margin-top: 1rem;
   }
 }

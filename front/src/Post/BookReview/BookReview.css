@@ -74,15 +74,6 @@
   max-width: 20%;
 }
 
-.post-book-review .book .book-data .cover {
-  /*position: relative;*/
-  /*left: 5rem;*/
-}
-
-.post-book-review.right .book .book-data .cover {
-  /*right: 5rem;*/
-}
-
 .post-book-review .book .book-data .cover img {
   max-width: 100%;
 }

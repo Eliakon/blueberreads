@@ -9,3 +9,15 @@
     padding-bottom: .5rem;
   }
 }
+
+/* Landscape smartphones and portrait tablets */
+@media (max-width: 719px) {
+  .latest-posts {
+    margin: .5rem 1rem 0;
+  }
+
+  .latest-posts > h1 {
+    margin-top: 2rem;
+    font-size: 1.6rem;
+  }
+}

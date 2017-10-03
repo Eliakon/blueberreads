@@ -12,3 +12,42 @@
     padding-left: 2rem;
   }
 }
+
+/* Landscape smartphones and portrait tablets */
+@media (max-width: 719px) {
+  .post-book-review,
+  .post-book-review .book,
+  .post-book-review .text {
+    display: block;
+    width: auto;
+  }
+
+  .post-book-review .book,
+  .post-book-review.right .book {
+    margin: 0 -1rem 3rem;
+    padding: 1rem;
+    transform: translateX(0);
+  }
+
+  .post-book-review .book .book-data {
+    position: static;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .post-book-review .book .book-data .author-and-rating {
+    margin: 0 0 -2rem;
+    text-align: left;
+  }
+
+  .post-book-review.right .book .book-data .author-and-rating {
+    margin: 0 0 -2rem;
+    text-align: right;
+  }
+
+  .post-book-review .book .book-data .cover img {
+    height: 15rem;
+    width: auto;
+    transform: translateY(3rem);
+  }
+}

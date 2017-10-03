@@ -1,0 +1,10 @@
+/* Landscape smartphones and portrait tablets */
+@media (max-width: 719px) {
+  .post-comments > h1 {
+    font-size: 1.6rem;
+  }
+
+  .post-comments > h2 {
+    font-size: 1.4rem;
+  }
+}

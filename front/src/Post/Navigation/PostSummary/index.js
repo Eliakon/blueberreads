@@ -7,7 +7,7 @@ import { host } from '../../../API';
 import './PostSummary.css';
 import './PostSummaryResponsive.css';
 
-const PostSummary = ({ id, slug, title, date, books, sectionTitle }) => {
+const PostSummary = ({ id, slug, title, displayDate, books, sectionTitle }) => {
   const postUrl = `/post/${id}-${slug}`;
 
   return (
@@ -18,7 +18,7 @@ const PostSummary = ({ id, slug, title, date, books, sectionTitle }) => {
           <h1>
             <Link to={postUrl}>{title}</Link>
           </h1>
-          <span className="date">{date}</span>
+          <span className="date">{displayDate}</span>
           <div className="books">
             {books.map((url, n) => <div className="book"><img src={`${host}${url}`} alt="" key={n} /></div>)}
           </div>
@@ -33,7 +33,7 @@ PostSummary.propTypes = {
   id: PropTypes.number,
   slug: PropTypes.string,
   title: PropTypes.string,
-  date: PropTypes.string,
+  displayDate: PropTypes.string,
   intro: PropTypes.string,
   books: PropTypes.array,
   sectionTitle: PropTypes.string,

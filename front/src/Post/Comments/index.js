@@ -7,6 +7,7 @@ import CommentForm from './CommentForm';
 import Icon from '../../Icon';
 
 import './Comments.css';
+import './CommentsResponsive.css';
 
 const Comments = ({ comments, onSubmitComment, isSubmittingComment, commentSubmitSuccess }) => {
   const commentsElements = (

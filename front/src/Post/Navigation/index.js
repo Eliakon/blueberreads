@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import PostSummary from './PostSummary';
 
 import './Navigation.css';
+import './NavigationResponsive.css';
 
 const Navigation = ({ previous, next }) => (
   <div className="post-navigation">

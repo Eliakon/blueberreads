@@ -4,3 +4,10 @@
     flex: 0 0 12rem;
   }
 }
+
+/* Landscape smartphones and portrait tablets */
+@media (max-width: 719px) {
+  .post-comment {
+    flex-direction: column;
+  }
+}

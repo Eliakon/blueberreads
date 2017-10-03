@@ -1,6 +1,6 @@
 /* Landscape smartphones and portrait tablets */
 @media (max-width: 719px) {
-  .home > .content {
+  .post-navigation footer {
     flex-direction: column;
   }
 }
