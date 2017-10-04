@@ -46,6 +46,10 @@ def pretty_date(time=False):
         return str(day_diff // 30) + " months ago"
     return str(day_diff // 365) + " years ago"
 
+def clean_markdown_string(value):
+    value = value.replace('\'', '’')
+    return value
+
 ALIGN_CHOICES = (
     ('left', 'left'),
     ('right', 'right'),
@@ -60,6 +64,22 @@ class Book(models.Model):
     @property
     def cover_url(self):
         return self.cover.url
+
+    def save(self, *args, **kwargs):
+        self.title = clean_markdown_string(self.title)
+        self.author = clean_markdown_string(self.author)
+        super(Book, self).save(*args, **kwargs)
+
+    def clean(self):
+        saved = 0
+        cleaned_title = clean_markdown_string(self.title)
+        cleaned_author = clean_markdown_string(self.author)
+        if cleaned_title != self.title or cleaned_author != self.author:
+            self.title = cleaned_title
+            self.author = cleaned_author
+            self.save()
+            saved = 1
+        return saved
 
     def __str__(self):
         return '{0} by {1}'.format(self.title, self.author)
@@ -84,7 +104,17 @@ class TextPostContent(PostContent):
 
     def save(self, *args, **kwargs):
         self.content_type = 'text'
+        self.text = clean_markdown_string(self.text)
         super(TextPostContent, self).save(*args, **kwargs)
+
+    def clean(self):
+        saved = 0
+        cleaned_text = clean_markdown_string(self.text)
+        if cleaned_text != self.text:
+            self.text = cleaned_text
+            self.save()
+            saved = 1
+        return saved
 
     def __str__(self):
         return '[{0}] Text ({1}): {2}'.format(self.order, self.id, self.text[:200])
@@ -101,7 +131,17 @@ class BookReviewPostContent(PostContent):
 
     def save(self, *args, **kwargs):
         self.content_type = 'book_review'
+        self.text = clean_markdown_string(self.text)
         super(BookReviewPostContent, self).save(*args, **kwargs)
+
+    def clean(self):
+        saved = 0
+        cleaned_text = clean_markdown_string(self.text)
+        if cleaned_text != self.text:
+            self.text = cleaned_text
+            self.save()
+            saved = 1
+        return saved
 
     def __str__(self):
         return '[{0}] Book review ({1}): {2} by {3} align-{4}'.format(
@@ -134,6 +174,22 @@ class Post(models.Model):
     def ordered_content(self):
         return self.content.order_by('order')
 
+    def save(self, *args, **kwargs):
+        self.title = clean_markdown_string(self.title)
+        self.intro = clean_markdown_string(self.intro)
+        super(Post, self).save(*args, **kwargs)
+
+    def clean(self):
+        saved = 0
+        cleaned_title = clean_markdown_string(self.title)
+        cleaned_intro = clean_markdown_string(self.intro)
+        if cleaned_title != self.title or cleaned_intro != self.intro:
+            self.title = cleaned_title
+            self.intro = cleaned_intro
+            self.save()
+            saved = 1
+        return saved
+
     def __str__(self):
         return '{0} ({1})'.format(self.title, self.display_date)
 
@@ -155,6 +211,22 @@ class Comment(models.Model):
     @property
     def display_date(self):
         return pretty_date(self.date)
+
+    def save(self, *args, **kwargs):
+        self.pseudo = clean_markdown_string(self.pseudo)
+        self.text = clean_markdown_string(self.text)
+        super(Comment, self).save(*args, **kwargs)
+
+    def clean(self):
+        saved = 0
+        cleaned_pseudo = clean_markdown_string(self.pseudo)
+        cleaned_text = clean_markdown_string(self.text)
+        if cleaned_pseudo != self.pseudo or cleaned_text != self.text:
+            self.pseudo = cleaned_pseudo
+            self.text = cleaned_text
+            self.save()
+            saved = 1
+        return saved
 
     def __str__(self):
         return 'Comment by {0} {1}'.format(self.pseudo, self.display_date)
