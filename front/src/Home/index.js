@@ -46,7 +46,15 @@ class Home extends React.Component {
     const { page: routePage } = this.props.match.params;
     const { appear, page:statePage } = this.state;
 
-    if (!appear || statePage < 1 || !routePage) {
+    if (!appear || statePage < 1) {
+      return;
+    }
+
+    if (!routePage) {
+      if (statePage != 1) {
+        this.setState({ appear: false });
+        this.getPosts(1);
+      }
       return;
     }
 
