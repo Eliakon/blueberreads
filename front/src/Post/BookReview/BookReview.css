@@ -1,5 +1,6 @@
 .post-book-review {
   display: table;
+  width: 100%;
   border-spacing: 0 3rem;
 }
 

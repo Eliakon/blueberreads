@@ -164,7 +164,7 @@ class Post(models.Model):
 
     @property
     def books(self):
-        book_reviews = self.content.filter(content_type='book_review')
+        book_reviews = self.content.filter(content_type='book_review')[:5]
         covers = []
         for review in book_reviews:
             covers.append(review.specialize().book.cover_url)
