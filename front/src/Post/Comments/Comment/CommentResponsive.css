@@ -9,5 +9,29 @@
 @media (max-width: 719px) {
   .post-comment {
     flex-direction: column;
+    margin: 0 -1rem;
+  }
+
+  .post-comment .avatar-and-pseudo {
+    text-align: left;
+    flex: 1;
+    padding: 0;
+  }
+
+  .post-comment.admin .avatar-and-pseudo {
+    flex-direction: row-reverse;
+  }
+
+  .post-comment.admin .avatar-and-pseudo .pseudo {
+    margin: 0;
+  }
+
+  .post-comment.admin .avatar-and-pseudo .admin-avatar {
+    flex: 0 0 3rem;
+    padding: 0 .5rem 0 0;
+  }
+
+  .post-comment .avatar-and-pseudo .links svg {
+    margin: 0 .2rem 0 0;
   }
 }

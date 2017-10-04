@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import './CommentForm.css';
+import './CommentFormResponsive.css';
 
 class CommentForm extends React.Component {
   static propTypes = {

@@ -16,8 +16,8 @@
     max-width: none;
   }
 
-  .navigation-post-summary:not(:nth-child(1)) {
-    margin-top: 2rem;
+  .navigation-post-summary {
+    margin-bottom: 2rem;
   }
 
   .navigation-post-summary > h1 {

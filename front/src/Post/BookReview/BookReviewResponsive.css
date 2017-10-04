@@ -50,4 +50,8 @@
     width: auto;
     transform: translateY(3rem);
   }
+
+  .post-book-review .text {
+    padding: 0;
+  }
 }

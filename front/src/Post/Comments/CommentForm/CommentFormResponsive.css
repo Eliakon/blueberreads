@@ -1,0 +1,14 @@
+/* Landscape smartphones and portrait tablets */
+@media (max-width: 719px) {
+  .comment-form form.active .contact {
+    flex-direction: column;
+  }
+
+  .comment-form form .contact input {
+    margin-bottom: 1rem;
+  }
+
+  .comment-form form .contact input:not(:last-child) {
+    margin-right: 0;
+  }
+}
