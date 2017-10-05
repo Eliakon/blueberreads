@@ -16,7 +16,9 @@ class Posts(APIView):
         except Exception:
             page = 1
 
-        posts_count = models.Post.objects.count()
+        published_posts = models.Post.objects.filter(published=True)
+
+        posts_count = published_posts.count()
         posts_per_page = 3
         last_page = int(posts_count / posts_per_page) + 1
         page = min(last_page, max(1, page))
@@ -28,7 +30,7 @@ class Posts(APIView):
         first_post_id = (page - 1) * posts_per_page
         last_post_id = first_post_id + posts_per_page
         latest_posts = serializers.PostSummary(
-            models.Post.objects.all().order_by('-date')[first_post_id:last_post_id],
+            published_posts.order_by('-date')[first_post_id:last_post_id],
             many=True,
         ).data
 
@@ -43,19 +45,19 @@ class Posts(APIView):
 class Post(APIView):
     def get(self, request):
         post_id = request.GET.get('id')
-        post = get_object_or_404(models.Post, id=post_id)
+        post = get_object_or_404(models.Post, id=post_id, published=True)
         serialized_post = serializers.PostSerializer(post).data
 
         navigation = { 'previous': {}, 'next': {} }
         try:
             navigation['previous'] = serializers.PostSummary(
-                post.get_previous_by_date()
+                post.get_previous_by_date(published=True)
             ).data
         except ObjectDoesNotExist:
             del navigation['previous']
         try:
             navigation['next'] = serializers.PostSummary(
-                post.get_next_by_date()
+                post.get_next_by_date(published=True)
             ).data
         except ObjectDoesNotExist:
             del navigation['next']
@@ -74,7 +76,7 @@ class Comment(APIView):
             return Response({ 'errors': serialized_comment.errors })
 
         validated_data = serialized_comment.validated_data
-        post = get_object_or_404(models.Post, id=data['postId'])
+        post = get_object_or_404(models.Post, id=data['postId'], published=True)
         models.Comment.objects.create(
             pseudo = validated_data['pseudo'],
             website = validated_data['website'],

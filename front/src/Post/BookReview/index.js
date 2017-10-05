@@ -8,7 +8,7 @@ import { host } from '../../API';
 import './BookReview.css';
 import './BookReviewResponsive.css';
 
-const BookReview = ({ book, rating, text, align }) => {
+const BookReview = ({ book, rating, showRating, text, align }) => {
   const { coverUrl, title, author, color } = book;
 
   const star = (filled, key) => (
@@ -25,7 +25,7 @@ const BookReview = ({ book, rating, text, align }) => {
           <div className="author-and-rating">
             <h2>by {author}</h2>
             <div className="rating">
-              {[...Array(5)].map((_, i) => star(rating > i, i))}
+              {showRating ? [...Array(5)].map((_, i) => star(rating > i, i)) : null}
             </div>
           </div>
           <div className="cover">
@@ -43,6 +43,7 @@ const BookReview = ({ book, rating, text, align }) => {
 BookReview.propTypes = {
   book: PropTypes.object,
   rating: PropTypes.number,
+  showRating: PropTypes.bool,
   text: PropTypes.string,
   alignRight: PropTypes.bool,
 };

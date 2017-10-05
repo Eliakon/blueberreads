@@ -18,6 +18,7 @@ class BookReviewPostContentAdmin(admin.ModelAdmin):
 
 @admin.register(models.Post)
 class PostAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("title",)}
     readonly_fields = ('content',)
 
     def content(self, instance):

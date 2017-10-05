@@ -30,7 +30,7 @@ class BookReviewPostContentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.BookReviewPostContent
-        fields = ['content_type', 'book', 'rating', 'text', 'align']
+        fields = ['content_type', 'book', 'rating', 'show_rating', 'text', 'align']
 
 class PostContentSerializer(serializers.RelatedField):
     def to_representation(self, value):

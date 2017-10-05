@@ -126,6 +126,7 @@ class TextPostContent(PostContent):
 class BookReviewPostContent(PostContent):
     book = models.ForeignKey('Book', related_name='book_review')
     rating = models.SmallIntegerField()
+    show_rating = models.BooleanField(default=True)
     text = models.TextField()
     align = models.CharField(max_length=5, choices=ALIGN_CHOICES)
 
