@@ -1,25 +1,25 @@
 @font-face {
   font-family: 'Lora';
-  src: url('/fonts/Lora-Regular.ttf');
+  src: url('/static/fonts/Lora-Regular.ttf');
 }
 
 @font-face {
   font-family: 'Lora';
   font-style: italic;
-  src: url('/fonts/Lora-Italic.ttf');
+  src: url('/static/fonts/Lora-Italic.ttf');
 }
 
 @font-face {
   font-family: 'Lora';
   font-weight: bold;
-  src: url('/fonts/Lora-Bold.ttf');
+  src: url('/static/fonts/Lora-Bold.ttf');
 }
 
 @font-face {
   font-family: 'Lora';
   font-style: italic;
   font-weight: bold;
-  src: url('/fonts/Lora-BoldItalic.ttf');
+  src: url('/static/fonts/Lora-BoldItalic.ttf');
 }
 
 ::selection {

@@ -7,7 +7,7 @@ import './Banner.css'
 const Banner = () => (
   <header className="banner">
     <Link to="/">
-      <img src="/images/logo-large.png" alt="Blueberreads" />
+      <img src="/static/images/logo-large.png" alt="Blueberreads" />
     </Link>
   </header>
 );

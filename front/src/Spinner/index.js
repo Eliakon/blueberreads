@@ -9,10 +9,10 @@ const Spinner = ({ show }) => (
   <div className={`spinner-wrapper ${!show ? 'hidden' : ''}`}>
     <Banner />
     <div className="spinner">
-      <img src="/images/berry.png" alt="" />
-      <img src="/images/berry.png" alt="" />
-      <img src="/images/berry.png" alt="" />
-      <img src="/images/berry.png" alt="" />
+      <img src="/static/images/berry.png" alt="" />
+      <img src="/static/images/berry.png" alt="" />
+      <img src="/static/images/berry.png" alt="" />
+      <img src="/static/images/berry.png" alt="" />
     </div>
   </div>
 );
