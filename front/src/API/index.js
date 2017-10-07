@@ -1,6 +1,6 @@
 import request from 'request';
 
-export const host = 'http://localhost:8000';
+export const host = window.location.origin.startsWith('http://localhost') ? 'http://localhost:8000' : '/';
 const r = request.defaults({ json: true });
 
 const getRequest = (url, callback) => {

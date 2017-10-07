@@ -28,7 +28,12 @@ SECRET_KEY = '^avoe661jyp6l&nc-b3=2z9*dd@+nddk#7-m+7$f%^&g+fxr8-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'blueberreads.herokuapp.com',
+]
+
+if DEV:
+    ALLOWED_HOSTS += ['localhost']
 
 
 # Application definition
