@@ -98,7 +98,7 @@ if not DEV:
         'USER': os.environ.get('BLUEBERREADS_DB_USER'),
         'PASSWORD': os.environ.get('BLUEBERREADS_DB_PASSWORD'),
         'HOST': os.environ.get('BLUEBERREADS_DB_HOST'),
-        'PORT': os.environ.get('BLUEBERREADS_DB_HOST'),
+        'PORT': os.environ.get('BLUEBERREADS_DB_PORT'),
     }
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
