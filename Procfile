@@ -1,1 +1,1 @@
-web: gunicorn back.back.wsgi --log-file -
+web: gunicorn --pythonpath="$PWD/back" back.wsgi --log-file -
