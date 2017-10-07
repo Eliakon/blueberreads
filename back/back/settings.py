@@ -94,9 +94,11 @@ DATABASES = {
 if not DEV:
     DATABASES['default'] = {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blueberreads',
-        'USER': 'estelle',
+        'NAME': os.environ.get('BLUEBERREADS_DB_NAME'),
+        'USER': os.environ.get('BLUEBERREADS_DB_USER'),
         'PASSWORD': os.environ.get('BLUEBERREADS_DB_PASSWORD'),
+        'HOST': os.environ.get('BLUEBERREADS_DB_HOST'),
+        'PORT': os.environ.get('BLUEBERREADS_DB_HOST'),
     }
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
