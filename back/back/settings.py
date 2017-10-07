@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import dj_database_url
 
-DEV = bool(os.environ.get('BLUEBERREADS_DEV', 'True'))
+DEV = os.environ.get('BLUEBERREADS_DEV') != 'False'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
