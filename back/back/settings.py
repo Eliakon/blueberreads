@@ -152,7 +152,6 @@ REACT_APP_DIR = os.path.join(BASE_DIR, 'react')
 
 STATICFILES_DIRS = [
     os.path.join(REACT_APP_DIR, 'build', 'static'),
-    MEDIA_ROOT,
 ]
 
 # Simplified static file serving.
