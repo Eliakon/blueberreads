@@ -3,7 +3,7 @@ import React from 'react';
 import marked from 'react-marked';
 
 import Icon from '../../Icon';
-import { host } from '../../API';
+import { mediaHost } from '../../API';
 
 import './BookReview.css';
 import './BookReviewResponsive.css';
@@ -29,7 +29,7 @@ const BookReview = ({ book, rating, showRating, text, align }) => {
             </div>
           </div>
           <div className="cover">
-            <img src={`${host}${coverUrl}`} alt="" />
+            <img src={`${mediaHost}${coverUrl}`} alt="" />
           </div>
         </div>
       </article>
