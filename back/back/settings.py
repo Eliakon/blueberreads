@@ -162,7 +162,7 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 if not DEV:
     DEFAULT_FILE_STORAGE = 'django_s3_storage.storage.S3Storage'
-    AWS_REGION = 'us-east-1'
+    AWS_REGION = 'us-east-2'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
     AWS_S3_BUCKET_NAME = os.environ.get('S3_BUCKET_NAME')
