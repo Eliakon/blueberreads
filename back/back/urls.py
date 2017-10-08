@@ -23,5 +23,5 @@ from blog.views import ReactAppView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^blog/', include('blog.urls')),
-    url(r'', ReactAppView.as_view()),
+    # url(r'', ReactAppView.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
