@@ -26,10 +26,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '^avoe661jyp6l&nc-b3=2z9*dd@+nddk#7-m+7$f%^&g+fxr8-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = DEV
 
 ALLOWED_HOSTS = [
     'blueberreads.herokuapp.com',
+    'blueberreads.blog',
+    'www.blueberreads.blog',
 ]
 
 if DEV:
