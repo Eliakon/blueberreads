@@ -87,4 +87,5 @@
 .post-book-review.right .text {
   padding: 0 3rem 0 0;
   text-align: left;
+  direction: ltr;
 }

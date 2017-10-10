@@ -35,7 +35,7 @@ ALLOWED_HOSTS = [
 ]
 
 if DEV:
-    ALLOWED_HOSTS += ['localhost']
+    ALLOWED_HOSTS = ['*']
 
 
 # Application definition
