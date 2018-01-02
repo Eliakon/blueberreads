@@ -60,6 +60,10 @@
   filter: grayscale(0);
 }
 
+.post > .content .post-intro a {
+  text-decoration: underline;
+}
+
 @keyframes book-appear {
   from {
     animation-timing-function: cubic-bezier(.5, -.5, .5, 1.5);

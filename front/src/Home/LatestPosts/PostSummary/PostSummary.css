@@ -54,3 +54,7 @@
   filter: grayscale(0);
   transform: translateY(-2rem);
 }
+
+.post-summary .content .post-intro a {
+  text-decoration: underline;
+}

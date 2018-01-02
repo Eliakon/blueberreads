@@ -31,7 +31,7 @@ const PostSummary = ({ id, slug, title, displayDate, intro, books }) => {
         <div className="not-desktop-books not-desktop">
           {books.map((url, n) => <img key={n} src={`${mediaHost}${url}`} alt="" />)}
         </div>
-        <div>{marked(intro)}</div>
+        <div className="post-intro">{marked(intro)}</div>
         <Link to={postUrl} className="post-link">Read more</Link>
       </div>
       <div className="books desktop">
