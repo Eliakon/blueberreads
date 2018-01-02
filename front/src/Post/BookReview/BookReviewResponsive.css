@@ -51,7 +51,8 @@
     transform: translateY(3rem);
   }
 
-  .post-book-review .text {
+  .post-book-review .text,
+  .post-book-review.right .text {
     padding: 0;
   }
 }

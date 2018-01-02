@@ -37,6 +37,11 @@
     transform: translateY(3rem);
   }
 
+  .currently-reading.appear .background {
+    margin: 0;
+    padding: 0;
+  }
+
   .currently-reading.appear img {
     transform: translateY(2rem);
   }

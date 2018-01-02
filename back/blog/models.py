@@ -47,7 +47,7 @@ def pretty_date(time=False):
     return str(day_diff // 365) + " years ago"
 
 def clean_markdown_string(value):
-    value = value.replace('\'', '’')
+    value = value.replace('\'', '’').replace('--', '—')
     return value
 
 ALIGN_CHOICES = (
@@ -83,6 +83,9 @@ class Book(models.Model):
 
     def __str__(self):
         return '{0} by {1}'.format(self.title, self.author)
+
+    class Meta:
+        ordering = ['title']
 
 class PostContent(models.Model):
     content_type = models.CharField(max_length=100)
@@ -193,6 +196,9 @@ class Post(models.Model):
 
     def __str__(self):
         return '{0} ({1})'.format(self.title, self.display_date)
+
+    class Meta:
+        ordering = ['-date']
 
 class CurrentlyReading(models.Model):
     book = models.ForeignKey('Book', related_name='currently_reading')
