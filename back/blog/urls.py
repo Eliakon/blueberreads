@@ -18,4 +18,9 @@ urlpatterns = [
         views.Comment.as_view(),
         name='comment',
     ),
+    url(
+        r'^me/$',
+        views.Me.as_view(),
+        name='me',
+    )
 ]

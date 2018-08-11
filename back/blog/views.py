@@ -93,6 +93,11 @@ class Comment(APIView):
 
         return Response({ 'post': serialized_post })
 
+class Me(APIView):
+    def get(self, request):
+        serialized_user = serializers.UserSerializer(request.user).data
+        return Response({ 'user': serialized_user })
+
 class ReactAppView(View):
     def get(self, request):
         try:

@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from . import models
+from django.contrib.auth import models as auth_models
 
 
 class BookSerializer(serializers.ModelSerializer):
@@ -53,3 +54,8 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Post
         fields = ['id', 'slug', 'title', 'display_date', 'intro', 'books', 'ordered_content', 'comments']
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = auth_models.User
+        fields = ['username', 'is_superuser']

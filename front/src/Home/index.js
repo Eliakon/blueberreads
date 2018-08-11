@@ -37,7 +37,7 @@ class Home extends React.Component {
 
   componentDidMount = () => {
     const { page:routePage } = this.props.match.params;
-    const page = parseInt(routePage) || 1;
+    const page = parseInt(routePage, 10) || 1;
 
     this.getPosts(page);
   };
@@ -51,14 +51,14 @@ class Home extends React.Component {
     }
 
     if (!routePage) {
-      if (statePage != 1) {
+      if (statePage !== 1) {
         this.setState({ appear: false });
         this.getPosts(1);
       }
       return;
     }
 
-    if (routePage != statePage) {
+    if (routePage !== statePage) {
       this.setState({ appear: false });
       this.getPosts(routePage);
     }
@@ -79,7 +79,7 @@ class Home extends React.Component {
 
         const { match, history } = this.props;
         const { page: routePage } = match.params
-        if (routePage && routePage != json.page) {
+        if (routePage && routePage !== json.page) {
           history.push(`/page/${json.page}`);
         }
 

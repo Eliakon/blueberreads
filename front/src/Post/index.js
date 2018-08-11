@@ -92,7 +92,7 @@ class Post extends React.Component {
       return;
     }
 
-    if (routeId != stateId) {
+    if (routeId !== stateId) {
       this.setState({ appear: false });
       this.getPost(routeId);
     }

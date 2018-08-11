@@ -20,8 +20,8 @@ const Footer = () => (
         </p>
         <p>I hope yo have a wonderful time on my blog!</p>
         <div className="social">
-          <a href="https://www.goodreads.com/user/show/49397473" target="_blank"><Icon type="Goodreads" size="30" /></a>
-          <a href="https://twitter.com/blueberreads" target="_blank"><Icon type="Twitter" size="30" /></a>
+          <a href="https://www.goodreads.com/user/show/49397473" target="_blank" rel="noopener noreferrer"><Icon type="Goodreads" size="30" /></a>
+          <a href="https://twitter.com/blueberreads" target="_blank" rel="noopener noreferrer"><Icon type="Twitter" size="30" /></a>
           <a href="mailto:blueberreads@gmail.com"><Icon type="Mail" size="30" /></a>
         </div>
       </div>
